@@ -2,17 +2,51 @@
   "date": "2026-10-25",
   "pillar": "Vad Mynth gör",
   "hook": "Kunderna frågar AI. Nämns ni?",
-  "caption": "Frågar dina kunder ChatGPT vem de ska välja?\nDå är frågan: nämns ni, eller er konkurrent?\n\nMynth finns för just den frågan.\n\nVarje dag mäter vi hur ert varumärke syns i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.\n\nSedan agerar vi:\n→ Innehåll som fyller luckorna där AI saknar svar om er\n→ Närvaro i databaser, redaktionella kanaler och hos återförsäljare, alltså där AI hämtar sin information\n\nTvå av tre spår kräver inte ens att ni rör er egen sajt.\n\nRisken är inte att AI talar illa om er. Risken är att AI inte nämner er alls.\n\nFå er synlighetsanalys. Länk i bio.\n\n#GEO #AIsynlighet #ChatGPT #B2Bmarknadsföring #Mynth",
+  "caption": "Frågar era kunder ChatGPT vem de ska välja?\nDå är frågan: nämns ni, eller er konkurrent?\n\nMynth finns för just den frågan.\n\nVarje dag mäter vi hur ert varumärke syns i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.\n\nSedan agerar vi:\n→ Innehåll som fyller luckorna där AI saknar svar om er\n→ Närvaro i databaser, redaktionella kanaler och hos återförsäljare, alltså där AI hämtar sin information\n\nRisken är inte att AI talar illa om er. Risken är att AI inte nämner er alls.\n\nFå er synlighetsanalys. Länk i bio.\n\n#GEO #AIsynlighet #ChatGPT #B2Bmarknadsföring #Mynth",
   "alt": [
-    "Text: Kunderna frågar AI. Nämns ni? Tre mintgröna prickar.",
-    "Text: Vi mäter. Dagligen, i fem AI-motorer: ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews.",
+    "Text: Kunderna frågar AI. Nämns ni? Mintgröna prickar.",
+    "Text: Vi mäter. Dagligen, där era kunder frågar: ChatGPT, Gemini, Perplexity, Copilot, Google AI Overviews.",
     "Text: Vi agerar. Innehåll och tredjepartsnärvaro där AI hämtar svaren.",
     "Text: Få er synlighetsanalys. mynth.se"
   ],
   "slides": [
-    {"type": "cover", "title": "Kunderna\nfrågar AI.", "em": "Nämns ni?"},
-    {"type": "text", "title": "Vi mäter.", "sub": "Dagligen, i fem AI-motorer.", "pills": ["ChatGPT", "Gemini", "Perplexity", "Copilot", "Google AI Overviews"]},
-    {"type": "text", "title": "Vi agerar.", "sub": "Innehåll och närvaro där AI hämtar svaren.", "rows": [["Innehåll", "Artiklar och beslutssidor som fyller luckorna där AI saknar svar om er."], ["Tredjepartsnärvaro", "Databaser, redaktionella kanaler och återförsäljare."]]},
-    {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}
+    {
+      "type": "cover",
+      "title": "Kunderna\nfrågar AI.",
+      "em": "Nämns ni?"
+    },
+    {
+      "type": "text",
+      "title": "Vi mäter.",
+      "sub": "Dagligen, där era kunder frågar.",
+      "pills": [
+        "ChatGPT",
+        "Gemini",
+        "Perplexity",
+        "Copilot",
+        "Google AI Overviews"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Vi agerar.",
+      "sub": "Innehåll och närvaro där AI hämtar svaren.",
+      "rows": [
+        [
+          "Innehåll",
+          "Artiklar och beslutssidor som fyller luckorna där AI saknar svar om er."
+        ],
+        [
+          "Tredjepartsnärvaro",
+          "Databaser, redaktionella kanaler och återförsäljare."
+        ]
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Få er",
+      "em": "synlighetsanalys.",
+      "url": "mynth.se"
+    }
   ]
 }
