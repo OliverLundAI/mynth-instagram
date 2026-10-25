@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-25",
+  "pillar": "Tanke",
+  "hook": "AI beskriver er utifrån det som finns om er.",
+  "caption": "AI beskriver er utifrån det som finns om er. Inte utifrån det ni tänkt säga.\n\nNär någon frågar en AI-assistent om er bransch sammanfattar den ett svar och nämner ett fåtal alternativ. Svaret bygger på den information som finns om företagen på nätet.\n\nBilden av er formas alltså på fler ställen än er egen webbplats:\n→ Databaser\n→ Redaktionella kanaler\n→ Återförsäljare\n\nRisken är att den bilden är tunn eller saknas helt. Då är det någon annan som nämns.\n\nVet ni vad AI säger om er i dag? Länk i bio.\n\n#GEO #AIsynlighet #Varumärke #B2Bmarknadsföring",
+  "alt": [
+    "Citat från Mynth: AI beskriver er utifrån det som finns om er. Inte utifrån det ni tänkt säga.",
+    "Text: Bilden av er formas överallt. Den byggs av det som står om er på nätet: er webbplats, databaser, redaktionella kanaler, återförsäljare.",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {
+      "type": "quote",
+      "quote": "AI beskriver er utifrån det som finns om er. Inte utifrån det ni tänkt säga.",
+      "by": "Mynth"
+    },
+    {
+      "type": "text",
+      "title": "Bilden av er formas överallt.",
+      "sub": "Den byggs av det som står om er på nätet.",
+      "pills": [
+        "Er webbplats",
+        "Databaser",
+        "Redaktionella kanaler",
+        "Återförsäljare"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Få er",
+      "em": "synlighetsanalys.",
+      "url": "mynth.se"
+    }
+  ]
+}

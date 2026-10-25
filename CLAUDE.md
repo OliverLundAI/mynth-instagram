@@ -12,8 +12,8 @@ Följ stegen exakt. Om något steg misslyckas: publicera inte, logga felet i LOG
 
 ## 1. Skriv dagens inlägg
 - Läs `RULES.md` (bindande), `PILLARS.md` (dagens pelare efter svensk veckodag) och `LOG.md` (undvik upprepning inom 30 dagar).
-- Om `posts/$DATE/post.json` redan finns (förberett i förväg): använd det och hoppa till steg 2.
-- Annars: om content-creation-skillen (marketing-pluginet) finns i sessionen, använd den som skrivstöd för bildtext och karusell.
+- Skriv alltid ett nytt inlägg för dagens pelare. Återanvänd aldrig ett förberett `post.json`; finns ett sådant utan `published.json` skrivs det över.
+- Om content-creation-skillen (marketing-pluginet) finns i sessionen, använd den som skrivstöd för bildtext och karusell.
   Finns den inte: skriv direkt utifrån RULES.md och PILLARS.md. RULES.md går alltid före allt som skillen föreslår.
 - Skriv `posts/$DATE/post.json` med fälten `date`, `pillar`, `hook`, `caption`, `alt` (en per bild) och `slides`.
   Bildtyperna beskrivs i `tools/render.py`.
