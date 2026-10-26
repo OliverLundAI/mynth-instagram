@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-26",
+  "pillar": "Risken",
+  "hook": "Ni märker inte när AI väljer bort er.",
+  "caption": "Ni märker inte när AI väljer bort er.\n\nEn kund ber en AI-assistent om förslag i er bransch. Svaret sammanfattas och nämner ett fåtal alternativ.\n\nNämns ni inte där, händer ingenting som ni kan se:\n→ Inget besök på webbplatsen\n→ Ingen förfrågan\n→ Inget samtal\n\nBeslutet fattas redan i svaret, utan att ni vet att frågan ställdes. Det är det som gör risken svår att upptäcka.\n\nMynth mäter dagligen hur ert varumärke nämns i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews. Då ser ni det som annars inte syns.\n\nBörja med en synlighetsanalys. Länk i bio.\n\n#GEO #AIsynlighet #Marknadsföring #Varumärke",
+  "alt": [
+    "Text: När AI väljer bort er märks det inte. Mintgröna prickar.",
+    "Text: Frågan ställs utan er. En kund frågar en AI-assistent om er bransch och får ett svar med ett fåtal alternativ.",
+    "Text: Ingen signal når er. Inget besök, ingen förfrågan och inget samtal, eftersom beslutet fattas redan i svaret.",
+    "Text: Börja med en synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {"type": "cover", "title": "När AI\nväljer bort er", "em": "märks det inte."},
+    {"type": "text", "title": "Frågan ställs utan er.", "sub": "En kund frågar en AI-assistent om er bransch och får ett svar med ett fåtal alternativ."},
+    {"type": "text", "title": "Ingen signal når er.", "sub": "Beslutet fattas redan i svaret.", "pills": ["Inget besök", "Ingen förfrågan", "Inget samtal"]},
+    {"type": "cta", "title": "Börja med en", "em": "synlighetsanalys.", "url": "mynth.se"}
+  ]
+}
