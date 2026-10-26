@@ -11,6 +11,8 @@ Bildtyper i post.json -> "slides":
   {"type":"text",  "title":"...", "sub":"...", "steps":["...","..."]}     numrerad lista
   {"type":"quote", "quote":"...", "by":"..."}                             stort serifcitat (bara egna påståenden)
   {"type":"cta",   "title":"...", "em":"...", "url":"mynth.se"}          stora prickar
+
+Tema: "theme": "light" | "dark" i post.json (valfritt, se tools/theme.json).
 """
 import html, json, pathlib, sys
 from playwright.sync_api import sync_playwright
@@ -26,7 +28,7 @@ CSS = f"""
 @font-face{{font-family:Switzer;src:url({FONTS}/switzer-600.woff2);font-weight:600}}
 @font-face{{font-family:Newsreader;src:url({FONTS}/newsreader-normal.woff2);font-weight:200 800;font-style:normal}}
 @font-face{{font-family:Newsreader;src:url({FONTS}/newsreader-italic.woff2);font-weight:200 800;font-style:italic}}
-:root{{--bg:#faf9f5;--fg:#141413;--fg2:#30302e;--fg3:#5e5d59;--fg4:#87867f;--b2:#dedcd1;--mint:#0bbfa6}}
+:root{{--bg:#faf9f5;--fg:#141413;--fg2:#30302e;--fg3:#5e5d59;--fg4:#87867f;--b2:#dedcd1;--mint:#0bbfa6;--logo:#0a0a0c}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:var(--bg)}}
 .s{{width:{W}px;height:{H}px;position:relative;overflow:hidden;background:var(--bg);
@@ -59,9 +61,28 @@ blockquote{{font-family:Newsreader,Georgia,serif;font-size:84px;line-height:1.12
 """
 
 # M-ikonen från Mynths designsystem (artifact "Mynth LinkedIn-banner", Profilbild)
-LOGO = ('<svg class="logo" viewBox="0 0 348 243" aria-label="Mynth"><polygon fill="#0a0a0c" '
+LOGO = ('<svg class="logo" viewBox="0 0 348 243" aria-label="Mynth"><polygon style="fill:var(--logo)" '
         'points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 '
         '186.5,0 131,168 75.5,0"/><circle fill="#56bca6" cx="324" cy="219" r="24"/></svg>')
+
+# Teman. Ljust är standard. "theme" i post.json styr; saknas det används tools/theme.json
+# ({"dark_dates": ["YYYY-MM-DD", ...]}) utifrån postens datum.
+THEMES = {
+    "light": "",
+    "dark": ":root{--bg:#0a0a0c;--fg:#faf9f5;--fg2:#dedcd1;--fg3:#b0aea5;--fg4:#87867f;--b2:#3a3a37;--mint:#0bbfa6;--logo:#faf9f5}",
+}
+
+
+def pick_theme(post):
+    t = post.get("theme")
+    if not t:
+        cfg = TOOLS / "theme.json"
+        dates = json.loads(cfg.read_text(encoding="utf-8")).get("dark_dates", []) if cfg.exists() else []
+        t = "dark" if post.get("date") in dates else "light"
+    if t not in THEMES:
+        sys.exit(f"okänt tema: {t}")
+    return t
+
 
 # Krymper rubriken tills innehållet slutar minst 90px ovanför hårlinjen.
 FIT_JS = f"""() => {{
@@ -122,6 +143,7 @@ def main(spec_path):
     spec_path = pathlib.Path(spec_path).resolve()
     post = json.loads(spec_path.read_text(encoding="utf-8"))
     slides = post["slides"]
+    theme = pick_theme(post)
     if not 2 <= len(slides) <= 10:
         sys.exit("Karusellen måste ha 2–10 bilder (Instagram API-gräns).")
     out, problems = [], []
@@ -130,7 +152,7 @@ def main(spec_path):
         pg = b.new_page(viewport={"width": W, "height": H})
         for i, s in enumerate(slides, 1):
             hp = spec_path.parent / f"_{i:02d}.html"
-            hp.write_text(f"<html lang='sv'><head><meta charset='utf-8'><style>{CSS}</style></head>"
+            hp.write_text(f"<html lang='sv'><head><meta charset='utf-8'><style>{CSS}{THEMES[theme]}</style></head>"
                           f"<body><div class='s'>{slide_html(s, i, len(slides))}</div></body></html>", encoding="utf-8")
             pg.goto(hp.as_uri())
             pg.evaluate("document.fonts.ready.then(()=>1)")
@@ -147,7 +169,7 @@ def main(spec_path):
         b.close()
     if problems:
         sys.exit("RENDERFEL – korta texten:\n" + "\n".join(problems))
-    print(json.dumps(out))
+    print(json.dumps({"theme": theme, "images": out}))
 
 
 if __name__ == "__main__":
