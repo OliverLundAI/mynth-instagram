@@ -84,6 +84,13 @@ def pick_theme(post):
     return t
 
 
+def small_dots(post):
+    """Små prickar (som på textbilderna) även på cover/cta för datum i theme.json -> small_dots_dates."""
+    cfg = TOOLS / "theme.json"
+    dates = json.loads(cfg.read_text(encoding="utf-8")).get("small_dots_dates", []) if cfg.exists() else []
+    return post.get("date") in dates
+
+
 # Krymper rubriken tills innehållet slutar minst 90px ovanför hårlinjen.
 FIT_JS = f"""() => {{
   const c = document.querySelector('.c'); const h = c.querySelector('h1, blockquote');
@@ -110,7 +117,7 @@ def chrome(i, n, big, hint):
             + f'<div class="hint" style="top:{LINE_Y - 34}px">{esc(hint)}</div>')
 
 
-def slide_html(s, i, n):
+def slide_html(s, i, n, small=False):
     t = s["type"]
     last = i == n
     hint = "Länk i bio" if last else "Svep →"
@@ -120,7 +127,7 @@ def slide_html(s, i, n):
         body = f'<div class="c" style="top:320px"><h1>{title}{em}</h1>'
         if s.get("url"):
             body += f'<div class="url">{esc(s["url"])}</div>'
-        return chrome(i, n, True, hint) + body + "</div>"
+        return chrome(i, n, not small, hint) + body + "</div>"
     if t == "quote":
         by = f'<p class="by">{esc(s["by"])}</p>' if s.get("by") else ""
         return chrome(i, n, False, hint) + f'<div class="c"><blockquote>{esc(s["quote"])}</blockquote>{by}</div>'
@@ -144,6 +151,7 @@ def main(spec_path):
     post = json.loads(spec_path.read_text(encoding="utf-8"))
     slides = post["slides"]
     theme = pick_theme(post)
+    small = small_dots(post)
     if not 2 <= len(slides) <= 10:
         sys.exit("Karusellen måste ha 2–10 bilder (Instagram API-gräns).")
     out, problems = [], []
@@ -153,7 +161,7 @@ def main(spec_path):
         for i, s in enumerate(slides, 1):
             hp = spec_path.parent / f"_{i:02d}.html"
             hp.write_text(f"<html lang='sv'><head><meta charset='utf-8'><style>{CSS}{THEMES[theme]}</style></head>"
-                          f"<body><div class='s'>{slide_html(s, i, len(slides))}</div></body></html>", encoding="utf-8")
+                          f"<body><div class='s'>{slide_html(s, i, len(slides), small)}</div></body></html>", encoding="utf-8")
             pg.goto(hp.as_uri())
             pg.evaluate("document.fonts.ready.then(()=>1)")
             pg.wait_for_timeout(250)
@@ -169,7 +177,7 @@ def main(spec_path):
         b.close()
     if problems:
         sys.exit("RENDERFEL – korta texten:\n" + "\n".join(problems))
-    print(json.dumps({"theme": theme, "images": out}))
+    print(json.dumps({"theme": theme, "small_dots": small, "images": out}))
 
 
 if __name__ == "__main__":

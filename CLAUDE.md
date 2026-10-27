@@ -20,7 +20,7 @@ Följ stegen exakt. Om något steg misslyckas: publicera inte, logga felet i LOG
 
 ## 2. Rendera och kontrollera
 - `python3 tools/render.py posts/$DATE/post.json` ger `01.jpg`, `02.jpg` osv.
-- Temat väljs automatiskt: datum i `tools/theme.json` → `dark`, annars `light`. Kontrollera att render.py rapporterar rätt tema. Lägg inte till `theme` i post.json.
+- Temat väljs automatiskt: datum i `tools/theme.json` → `dark`, annars `light`. Datum i `small_dots_dates` ger små prickar även på cover och cta. Kontrollera att render.py rapporterar rätt tema och prickstorlek. Lägg inte till `theme` i post.json.
 - Vid RENDERFEL: korta texten och rendera om (högst 3 försök).
 - Titta på varje bild med Read-verktyget och kontrollera att ingen text är avklippt, överlappar eller är felstavad.
 - Gå igenom kvalitetskontrollen i RULES.md avsnitt 5. Alla punkter måste vara ja.
