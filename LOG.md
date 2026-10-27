@@ -4,6 +4,7 @@ En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
 | Datum | Pelare | Krok | Bilder | Länk |
 |---|---|---|---|---|
+| 2026-10-27 | Så fungerar AI-svar | Så blir en fråga till ett AI-svar. | 4 | https://www.instagram.com/p/De_OghvFmvG/ |
 | 2026-10-26 | Risken | Ni märker inte när AI väljer bort er. | 4 | https://www.instagram.com/p/De8s6IQnMyp/ |
 | 2026-10-25 | Tanke | AI beskriver er utifrån det som finns om er. | 3 | https://www.instagram.com/p/De6KT55lReK/ |
 | 2026-10-25 | Vad Mynth gör | Kunderna frågar AI. Nämns ni? | 4 | https://www.instagram.com/p/De6E3LinDrE/ |
