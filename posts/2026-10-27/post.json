@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-27",
+  "pillar": "Så fungerar AI-svar",
+  "hook": "Så blir en fråga till ett AI-svar.",
+  "caption": "Så blir en fråga till ett AI-svar.\n\nFrågan: En kund ber en AI-assistent om förslag i er bransch.\n\nUnderlaget: Assistenten utgår från den information som finns om företagen på nätet.\n\nSvaret: En sammanfattning som nämner ett fåtal alternativ.\n\nSvaret kan alltså bara bygga på det som finns. Är underlaget om er tunt, har assistenten lite att gå på, och då nämns någon annan.\n\nDet är där Mynth arbetar:\n→ Vi mäter dagligen hur ert varumärke nämns i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews\n→ Vi fyller luckorna med innehåll där AI saknar svar om er\n→ Vi bygger närvaro i databaser, redaktionella kanaler och hos återförsäljare, alltså där AI hämtar information\n\nVet ni hur underlaget om er ser ut i dag? Länk i bio.\n\n#GEO #AIsynlighet #ChatGPT #B2Bmarknadsföring",
+  "alt": [
+    "Text: Från fråga till AI-svar, så går det till. Mintgröna prickar.",
+    "Text: Så formas ett AI-svar. Frågan: en kund ber en AI-assistent om förslag i er bransch. Underlaget: information som finns om företagen på nätet. Svaret: en sammanfattning som nämner ett fåtal alternativ.",
+    "Text: Svaret bygger på det som finns. Är underlaget om er tunt, nämns någon annan.",
+    "Text: Beställ er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {"type": "cover", "title": "Från fråga\ntill AI-svar", "em": "så går det till."},
+    {"type": "text", "title": "Så formas ett AI-svar.", "sub": "Från kundens fråga till färdigt svar.", "rows": [
+      ["Frågan", "En kund ber en AI-assistent om förslag i er bransch."],
+      ["Underlaget", "Information som finns om företagen på nätet."],
+      ["Svaret", "En sammanfattning som nämner ett fåtal alternativ."]
+    ]},
+    {"type": "text", "title": "Svaret bygger på det som finns.", "sub": "Är underlaget om er tunt, nämns någon annan."},
+    {"type": "cta", "title": "Beställ er", "em": "synlighetsanalys.", "url": "mynth.se"}
+  ]
+}
