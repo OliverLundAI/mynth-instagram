@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-28",
+  "pillar": "Vad vi mäter",
+  "hook": "Ett enskilt AI-svar säger lite om hur ni syns.",
+  "caption": "Ett enskilt AI-svar säger lite om hur ni syns.\n\nStäller ni en fråga till en AI-assistent får ni en ögonblicksbild. Samma fråga kan ge ett annat svar i morgon, med andra företag nämnda.\n\nRisken med ett stickprov är att bilden ser bättre eller sämre ut än den är.\n\nDärför mäter Mynth dagligen hur ert varumärke nämns och citeras i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.\n\nMätning över tid visar:\n→ om ni nämns och citeras, eller saknas i svaren\n→ skillnaderna mellan motorerna\n→ hur bilden förändras över tid\n\nFörsta steget är en synlighetsanalys, skräddarsydd efter era mål. Länk i bio.\n\n#GEO #AIsynlighet #ChatGPT #Marknadsföring",
+  "alt": [
+    "Text: Ett AI-svar säger lite, mönstret säger mer. Mintgröna prickar.",
+    "Text: Vi mäter dagligen i alla motorer. ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.",
+    "Text: Ett stickprov räcker inte. Samma fråga kan ge olika svar, så först mätning över tid visar hur ni syns.",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Ett AI-svar\nsäger lite,",
+      "em": "mönstret säger mer."
+    },
+    {
+      "type": "text",
+      "title": "Vi mäter dagligen i alla motorer.",
+      "sub": "Hur ert varumärke nämns och citeras i AI-svaren.",
+      "pills": [
+        "ChatGPT",
+        "Gemini",
+        "Perplexity",
+        "Copilot",
+        "Google AI Overviews"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Ett stickprov räcker inte.",
+      "sub": "Samma fråga kan ge olika svar, så först mätning över tid visar hur ni syns."
+    },
+    {
+      "type": "cta",
+      "title": "Få er",
+      "em": "synlighetsanalys.",
+      "url": "mynth.se"
+    }
+  ]
+}
