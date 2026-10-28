@@ -18,7 +18,16 @@ VER = os.environ.get("IG_API_VERSION", "").strip()
 BASE = "https://graph.instagram.com" + (f"/{VER}" if VER else "")
 
 
-def call(method, path, **params):
+class ApiError(Exception):
+    def __init__(self, msg, body):
+        super().__init__(msg)
+        try:
+            self.error = json.loads(body).get("error", {})
+        except ValueError:
+            self.error = {}
+
+
+def call(method, path, soft=False, **params):
     params["access_token"] = TOKEN
     url = (path if path.startswith("http") else f"{BASE}/{path.lstrip('/')}")
     data = None
@@ -32,7 +41,10 @@ def call(method, path, **params):
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
         body = e.read().decode(errors="replace")
-        sys.exit(f"API-fel {e.code} på {method} {path}: {body}")
+        msg = f"API-fel {e.code} på {method} {path}: {body}"
+        if soft:
+            raise ApiError(msg, body)
+        sys.exit(msg)
 
 
 def me():
@@ -48,6 +60,21 @@ def wait_ready(cid, tries=30):
             sys.exit(f"Container {cid} fick status {st}")
         time.sleep(4)
     sys.exit(f"Container {cid} blev aldrig klar")
+
+
+def publish_container(uid, cid, tries=6, pause=15):
+    """media_publish kan svara "not ready" (kod 9007, subkod 2207027) en stund efter att
+    containern rapporterat FINISHED. Försök då igen. Samma container kan bara publiceras
+    en gång, så omförsök kan inte ge dubbla inlägg."""
+    for n in range(1, tries + 1):
+        try:
+            return call("POST", f"{uid}/media_publish", soft=True, creation_id=cid)["id"]
+        except ApiError as e:
+            not_ready = e.error.get("code") == 9007 and e.error.get("error_subcode") == 2207027
+            if not not_ready or n == tries:
+                sys.exit(str(e))
+            print(f"Inte klar för publicering, nytt försök om {pause} s ({n}/{tries - 1})", file=sys.stderr)
+            time.sleep(pause)
 
 
 def publish(spec_path, urls):
@@ -67,7 +94,7 @@ def publish(spec_path, urls):
     parent = call("POST", f"{uid}/media", media_type="CAROUSEL",
                   children=",".join(children), caption=post["caption"])["id"]
     wait_ready(parent)
-    mid = call("POST", f"{uid}/media_publish", creation_id=parent)["id"]
+    mid = publish_container(uid, parent)
     link = call("GET", mid, fields="permalink").get("permalink", "")
     print(json.dumps({"media_id": mid, "permalink": link}))
 
