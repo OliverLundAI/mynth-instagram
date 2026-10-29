@@ -21,4 +21,6 @@ for b in css.split('@font-face')[1:]:
 PY
 fi
 python3 -c "import playwright, PIL" 2>/dev/null || pip install --break-system-packages -q playwright pillow
+# ffmpeg för Reels (tools/video.py). Saknas det används imageio-ffmpeg, som har en färdig binär.
+command -v ffmpeg >/dev/null || python3 -c "import imageio_ffmpeg" 2>/dev/null || pip install --break-system-packages -q imageio-ffmpeg
 ls fonts

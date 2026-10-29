@@ -1,101 +1,80 @@
 #!/usr/bin/env python3
-"""Tre-i-en (WHOOP-inspirerat delat rutnät): en panoramabild som delas på tre inläggs omslag.
+"""Tre-i-en ("Mintsolen"): en panoramabild som delas på tre Reels-omslag i profilrutnätet.
 
 Användning: python3 tools/panorama.py tools/series/<namn>.png
-Bilden är 3104x1350. Omslag k (0 = vänster i profilrutnätet) = x k*1012 .. k*1012+1080.
-Instagram visar 4:5-inlägg som 3:4 i profilrutnätet (beskärs 34 px per sida), så de synliga
-delarna (k*1012+34 .. k*1012+1046) möts sömlöst över raden.
+
+Panoramat är 3240x1920. Omslag k (0 = vänster i profilrutnätet) = x k*1080 .. (k+1)*1080, alltså
+ett 9:16-omslag per Reel. Profilrutnätet visar mitten i 3:4 (y 240..1680), så motivet och texterna
+ligger där och de tre synliga delarna möts sömlöst över raden.
+
+sun_svg() och texts_svg() används också av tools/video.py, så att videons intro landar exakt i omslaget.
 """
-import math, pathlib, sys
+import pathlib, sys
 from playwright.sync_api import sync_playwright
+from PIL import Image
 
 TOOLS = pathlib.Path(__file__).resolve().parent
 FONTS = (TOOLS / "fonts").as_uri()
-PW, PH, TW, CROP = 3104, 1350, 1080, 34
-STEP = 1012
+TW, TH = 1080, 1920          # ett Reels-omslag (9:16)
+PW, PH = 3 * TW, TH          # hela panoramat
+VIS_Y = (TH - TW * 4 // 3) // 2   # 240: överkant för det som syns i rutnätet (3:4)
+VIS_H = TW * 4 // 3               # 1440
+MINT = "#0bbfa6"
 
+# Mintsolen: en jätteskiva som går in uppifrån och sveper över hela raden.
+SUN_R = 2453
+SUN_CX = PW // 2
+SUN_CY = VIS_Y + round(VIS_H * 2 / 3) - SUN_R   # nedersta punkten två tredjedelar ner i rutan
 
-def vis(k):  # synligt intervall för omslag k i panoramakoordinater
-    return k * STEP + CROP, k * STEP + TW - CROP
-
-
-TEXTS = [  # (omslag, x i synlig yta, y, ankare, text, klass)
-    (0, 96, 150, "start", "Synas i AI", "k"),
-    (1, 506, 1215, "middle", "Rekommenderar AI er eller konkurrenten?", "t"),
-    (2, 916, 1215, "end", "mynth.se", "u"),
+TEXT_Y = VIS_Y + round(VIS_H * 0.9)
+TEXTS = [  # (omslag, x i omslaget, ankare, text, klass)
+    (0, 96, "start", "Synas i AI", "k"),
+    (1, TW // 2, "middle", "Rekommenderar AI er eller konkurrenten?", "t"),
+    (2, TW - 96, "end", "mynth.se", "u"),
 ]
 
-
-STOPS = [(0, (0x0b, 0x6e, 0x63)), (.55, (0x0b, 0xbf, 0xa6)), (1, (0x9b, 0xf5, 0xe1))]
-
-
-def mix(t):
-    for (a, ca), (b, cb) in zip(STOPS, STOPS[1:]):
-        if t <= b:
-            u = (t - a) / (b - a)
-            return "#" + "".join(f"{round(x + (y - x) * u):02x}" for x, y in zip(ca, cb))
-    return "#9bf5e1"
+STYLE = f"""
+@font-face{{font-family:Switzer;src:url({FONTS}/switzer-500.woff2);font-weight:500}}
+@font-face{{font-family:Switzer;src:url({FONTS}/switzer-600.woff2);font-weight:600}}
+.pt{{font-family:Switzer,Arial,sans-serif;font-size:32px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;fill:#fff}}
+.pt.k{{fill:{MINT}}} .pt.u{{text-transform:none;letter-spacing:.06em;font-weight:500;fill:#bdbdbd}}
+"""
 
 
-# Färg uppifrån i skarpa, platta band som trappar ner till svart. Inga mjuka toningar.
-BANDS = ["#0bbfa6", "#099c88", "#07786a", "#05554b", "#03332d", "#011714"]
-BAND_H = 76
-BG = (f'<rect width="{PW}" height="{PH}" fill="#000"/>'
-      + "".join(f'<rect y="{i * BAND_H}" width="{PW}" height="{BAND_H}" fill="{c}"/>' for i, c in enumerate(BANDS)))
+def sun_svg(k=None):
+    """Solen i panoramakoordinater, eller förskjuten till omslag k (0..2) om k anges."""
+    dx = -k * TW if k is not None else 0
+    return f'<circle cx="{SUN_CX + dx}" cy="{SUN_CY}" r="{SUN_R}" fill="{MINT}"/>'
 
 
-
-def svg():
+def texts_svg(k=None):
     out = []
-    boxes = []
-    for k, x, y, anc, txt, cls in TEXTS:
-        ax = vis(k)[0] + x
-        out.append(f'<text x="{ax}" y="{y}" text-anchor="{anc}" class="{cls}">{txt}</text>')
-        boxes.append((ax, y))
-    # Prickfält: en mjuk våg av mintprickar som löper över alla tre omslagen.
-    sp = 46
-    for j in range(0, PH // sp + 2):
-        for i in range(0, PW // sp + 2):
-            x, y = i * sp + 10, j * sp + 8
-            y0 = 640 + 250 * math.sin(2 * math.pi * x / PW * 1.15 + 0.9)
-            d = abs(y - y0)
-            r = 17 * math.exp(-(d / 150) ** 2)
-            if y < 220 or y > 1110:
-                continue
-            if r > 4.2:
-                # Färg efter storlek: djup teal i kanten, mint i mitten, ljus mint i vågens kärna.
-                t = min(1, (r - 4.2) / 12)
-                out.append(f'<circle cx="{x}" cy="{y}" r="{r:.1f}" fill="{mix(t)}"/>')
-            else:
-                out.append(f'<circle cx="{x}" cy="{y}" r="2.6" fill="#ffffff" fill-opacity=".12"/>')
-    return "\n".join(out)
+    for t, x, anc, txt, cls in TEXTS:
+        if k is not None and t != k:
+            continue
+        ax = x + (t * TW if k is None else 0)
+        out.append(f'<text x="{ax}" y="{TEXT_Y}" text-anchor="{anc}" class="pt {cls}">{txt}</text>')
+    return "".join(out)
 
 
 def main(dst):
-    html = f"""<html><head><meta charset='utf-8'><style>
-@font-face{{font-family:Switzer;src:url({FONTS}/switzer-500.woff2);font-weight:500}}
-@font-face{{font-family:Switzer;src:url({FONTS}/switzer-600.woff2);font-weight:600}}
-*{{margin:0}} body{{background:#000;width:{PW}px;height:{PH}px}}
-text{{font-family:Switzer,Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em}}
-.k{{font-size:30px;font-weight:600;fill:#ffffff}}
-.t{{font-size:30px;font-weight:600;fill:#f2f2f0}}
-.u{{font-size:30px;font-weight:500;fill:#cfeee7;text-transform:none;letter-spacing:.06em}}
-</style></head><body><svg width="{PW}" height="{PH}" viewBox="0 0 {PW} {PH}">
-{BG}{svg()}</svg></body></html>"""
     dst = pathlib.Path(dst).resolve()
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    html = (f"<html><head><meta charset='utf-8'><style>*{{margin:0}}body{{background:#000}}{STYLE}</style></head><body>"
+            f'<svg width="{PW}" height="{PH}" viewBox="0 0 {PW} {PH}"><rect width="{PW}" height="{PH}" fill="#000"/>'
+            f"{sun_svg()}{texts_svg()}</svg></body></html>")
     tmp = dst.with_suffix(".html")
     tmp.write_text(html, encoding="utf-8")
+    png = dst.with_name(dst.stem + "_2x.png")
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": PW, "height": PH}, device_scale_factor=2)
         pg.goto(tmp.as_uri())
         pg.evaluate("document.fonts.ready.then(()=>1)")
         pg.wait_for_timeout(300)
-        png = dst.with_name(dst.stem + "_2x.png")
         pg.screenshot(path=str(png))
         b.close()
-    from PIL import Image
-    # Renderas i dubbel upplösning och skalas ner för skarpa kanter. Sparas förlustfritt (PNG).
+    # Dubbel upplösning, nedskalad för skarpa kanter. Sparas förlustfritt.
     Image.open(png).convert("RGB").resize((PW, PH), Image.LANCZOS).save(dst, "PNG", optimize=True)
     png.unlink(); tmp.unlink()
     print(dst)

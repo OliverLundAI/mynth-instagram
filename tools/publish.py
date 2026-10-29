@@ -8,7 +8,8 @@ Miljövariabler:
 Kommandon:
   publish.py me                                   -> kontoinfo (user_id, username)
   publish.py refresh                              -> förnyar token, skriver {"access_token","expires_in"}
-  publish.py publish <post.json> <url1> <url2>... -> publicerar, skriver {"media_id","permalink"}
+  publish.py publish <post.json> <url1> <url2>... -> publicerar karusell, skriver {"media_id","permalink"}
+  publish.py reel <post.json> <video_url> <cover_url> -> publicerar Reel med eget omslag, skriver {"media_id","permalink"}
   publish.py limit                                -> publiceringskvot senaste 24 h
 """
 import json, os, sys, time, urllib.parse, urllib.request, urllib.error
@@ -51,14 +52,15 @@ def me():
     return call("GET", "me", fields="user_id,username,account_type")
 
 
-def wait_ready(cid, tries=30):
+def wait_ready(cid, tries=30, pause=4):
     for _ in range(tries):
-        st = call("GET", cid, fields="status_code,status").get("status_code")
+        r = call("GET", cid, fields="status_code,status")
+        st = r.get("status_code")
         if st == "FINISHED":
             return
         if st in ("ERROR", "EXPIRED"):
-            sys.exit(f"Container {cid} fick status {st}")
-        time.sleep(4)
+            sys.exit(f"Container {cid} fick status {st}: {r.get('status', '')}")
+        time.sleep(pause)
     sys.exit(f"Container {cid} blev aldrig klar")
 
 
@@ -99,6 +101,17 @@ def publish(spec_path, urls):
     print(json.dumps({"media_id": mid, "permalink": link}))
 
 
+def reel(spec_path, video_url, cover_url):
+    post = json.load(open(spec_path, encoding="utf-8"))
+    uid = me()["user_id"]
+    cid = call("POST", f"{uid}/media", media_type="REELS", video_url=video_url, cover_url=cover_url,
+               caption=post["caption"], share_to_feed="true")["id"]
+    wait_ready(cid, tries=72, pause=5)  # videobearbetning tar längre tid än bilder
+    mid = publish_container(uid, cid)
+    link = call("GET", mid, fields="permalink").get("permalink", "")
+    print(json.dumps({"media_id": mid, "permalink": link}))
+
+
 if __name__ == "__main__":
     if not TOKEN:
         sys.exit("IG_TOKEN saknas")
@@ -112,5 +125,7 @@ if __name__ == "__main__":
         print(json.dumps(call("GET", f"{me()['user_id']}/content_publishing_limit", fields="quota_usage,config")))
     elif cmd == "publish":
         publish(sys.argv[2], sys.argv[3:])
+    elif cmd == "reel" and len(sys.argv) == 5:
+        reel(sys.argv[2], sys.argv[3], sys.argv[4])
     else:
         sys.exit(__doc__)

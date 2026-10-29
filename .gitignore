@@ -1,3 +1,5 @@
 tools/fonts/
 tools/.cache/
 *.html
+posts/*/check-*.jpg
+__pycache__/

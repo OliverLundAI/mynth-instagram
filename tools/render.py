@@ -11,7 +11,7 @@ Bildtyper i post.json -> "slides":
   {"type":"text",  "title":"...", "sub":"...", "steps":["...","..."]}     numrerad lista
   {"type":"quote", "quote":"...", "by":"..."}                             stort serifcitat (bara egna påståenden)
   {"type":"cta",   "title":"...", "em":"...", "url":"mynth.se"}          stora prickar
-  {"type":"panel"}   bara i serier: dagens tredjedel av seriens panoramabild (tre-i-en i profilrutnätet)
+  {"type":"panel"}   bara i serier, som Reel via tools/video.py (Mintsolen)
 
 Tema: väljs från tools/theme.json utifrån datum: "series" -> black (WHOOP-inspirerat, versal grotesk,
 serieetikett "Titel · Del n/N" överst på varje bild), "dark_dates" -> dark, annars light.
@@ -103,17 +103,6 @@ def series_label(post):
     if post.get("date") not in dates:
         return None
     return f"{ser['title']} · Del {dates.index(post['date']) + 1}/{len(dates)}"
-
-
-def panel_image(post):
-    """Tre-i-en: dagens tredjedel av panoramabilden i theme.json -> series.panorama (se tools/panorama.py).
-    Senast publicerade hamnar längst till vänster i profilrutnätet, så första datumet blir högra delen."""
-    ser = theme_cfg().get("series") or {}
-    dates = ser.get("dates", [])
-    if post.get("date") not in dates or not ser.get("panorama"):
-        sys.exit("bildtypen panel kräver att datumet ingår i en serie med panorama i tools/theme.json")
-    k = len(dates) - 1 - dates.index(post["date"])
-    return Image.open(TOOLS / ser["panorama"]).convert("RGB").crop((k * 1012, 0, k * 1012 + W, H))
 
 
 def pick_theme(post):
@@ -215,10 +204,7 @@ def main(spec_path):
         pg = b.new_page(viewport={"width": W, "height": H}, device_scale_factor=2)
         for i, s in enumerate(slides, 1):
             if s["type"] == "panel":
-                jpg = spec_path.parent / f"{i:02d}.jpg"
-                panel_image(post).save(jpg, "JPEG", **JPEG)
-                out.append(str(jpg))
-                continue
+                sys.exit("panel renderas bara som video: python3 tools/video.py")
             hp = spec_path.parent / f"_{i:02d}.html"
             hp.write_text(f"<html lang='sv'><head><meta charset='utf-8'><style>{CSS}{THEMES[theme]}</style></head>"
                           f"<body><div class='s'>{slide_html(s, i, len(slides), small)}</div></body></html>", encoding="utf-8")

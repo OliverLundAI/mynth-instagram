@@ -38,7 +38,7 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 - Bildtext: krok på första raden (under 125 tecken), korta stycken med luft, max 1 200 tecken.
   Avsluta med ”Länk i bio.” eller en mjuk fråga, och sedan 3–5 hashtags, alltid #GEO och #AIsynlighet.
 - Inga emojis. Pilen → är okej i listor.
-- Karusell med 3–6 bilder. Bild 1 är alltid `cover` (i serier `panel`, se avsnitt 6) och sista bilden är alltid `cta` (”Få er synlighetsanalys.” eller en liknande variant + mynth.se).
+- Karusell med 3–6 bilder. Bild 1 är alltid `cover` och sista bilden är alltid `cta` (”Få er synlighetsanalys.” eller en liknande variant + mynth.se). Serier publiceras som Reels, se avsnitt 6.
 - Bildtexter på slides ska vara korta. Rubriken är högst cirka 6 ord och underraden en mening.
 - Alt-text för varje bild (vad som står på den).
 
@@ -57,12 +57,12 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 
 ## 6. Serier (tre-i-en)
 
-- En serie är tre inlägg i följd vars första bilder tillsammans bildar en sammanhängande panoramabild över en hel rad i profilrutnätet (WHOOP-inspirerat delat rutnät). Serien definieras i `tools/theme.json` under `series` (titel, datum, panoramabild).
-- I en serie är bild 1 alltid `{"type": "panel"}` i stället för `cover`. render.py lägger in rätt tredjedel av panoramabilden. Skriv ingen egen text på den.
-- Därefter följer bilderna dagens pelare som vanligt (t.ex. `text` → `text` → `cta`, `text(steps)` → `cta` eller `quote` → `text` → `cta`). Sista bilden är alltid `cta`, och karusellen har 3–6 bilder inklusive panelen.
-- Eftersom panelen saknar rubrik bär bildtextens första rad hela kroken. Den ska kunna stå ensam.
-- Alt-text för panelen: ”Del av en panoramabild: mintgröna prickar i en våg under skarpa mintgröna band uppifrån som trappar ner till svart.” följt av texten som syns på just den delen: första datumet ”Text: mynth.se”, andra ”Text: Rekommenderar AI er eller konkurrenten?”, tredje ”Text: Synas i AI”.
+- En serie är tre inlägg i följd som publiceras som Reels. Deras omslag bildar tillsammans en sammanhängande bild över en hel rad i profilrutnätet: Mintsolen, en stor mintgrön skiva som går in uppifrån över svart (WHOOP-inspirerat delat rutnät). Serien definieras i `tools/theme.json` under `series` (titel, datum, panoramabild).
+- Omslaget skapas automatiskt av `tools/video.py`. Skriv ingen egen text på det.
+- `slides` i post.json blir videons scener i tur och ordning. Första scenen är alltid `{"type": "panel"}`, där Mintsolen glider in och landar i omslaget. Sista scenen är alltid `cta`. Däremellan följer scenerna dagens pelare (t.ex. `text` → `text`, `text(steps)` eller `quote` → `text`). Totalt 3–6 scener.
+- Eftersom omslaget saknar rubrik bär bildtextens första rad hela kroken. Den ska kunna stå ensam.
+- `alt` skrivs som vanligt, en per scen (vad som står i scenen). För panelen: ”Mintgrön skiva som går in uppifrån över svart bakgrund.” och texten som syns på just den delen: första datumet ”Text: mynth.se”, andra ”Text: Rekommenderar AI er eller konkurrenten?”, tredje ”Text: Synas i AI”.
 - Varje inlägg följer sin veckodags pelare och alla regler ovan, och ska fungera fristående. Hänvisa inte till andra delar och lova inte när nästa del kommer.
-- Serieetiketten (t.ex. ”Synas i AI · Del 1/3”) läggs på de övriga bilderna automatiskt av render.py. Skriv den inte i slides. Rubriker sätts i versaler av temat, så håll dem korta.
+- Serieetiketten (t.ex. ”Synas i AI · Del 1/3”) läggs på scenerna automatiskt. Skriv den inte i slides. Rubriker sätts i versaler av temat, så håll dem korta.
 - Bildtexten avslutas, före hashtaggarna, med raden ”Del 1/3 i serien Synas i AI.” (rätt delnummer).
-- Publicera exakt ett inlägg per seriedag. Ett extra eller saknat inlägg förskjuter panoramabilden i rutnätet.
+- Publicera exakt ett inlägg per seriedag. Ett extra eller saknat inlägg förskjuter bilden i rutnätet.
