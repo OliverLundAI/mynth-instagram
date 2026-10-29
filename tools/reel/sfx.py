@@ -120,9 +120,40 @@ def chime(v=0):
     return x * _env(len(t), .003, .42)
 
 
-SFX = dict(click=click, pop=pop, blip=blip, tick=tick, scan=scan, whoosh=whoosh, swish=swish,
+def _scratch(sec, seed):
+    """Penna mot papper: bandpassat brus i korta drag med pauser."""
+    r = np.random.default_rng(seed)
+    n = int(sec * SR)
+    x = _band_noise(sec, 1800, 7500)
+    amp = np.zeros(n)
+    i = 0
+    while i < n:
+        L = int(r.uniform(.07, .24) * SR)
+        e = min(L, n - i)
+        tt = np.arange(e) / SR
+        amp[i:i + e] = np.sin(np.pi * tt / (L / SR)) ** .6 * r.uniform(.5, 1)
+        i += e + int(r.uniform(.02, .07) * SR)
+    fade = np.clip(np.arange(n) / (.05 * SR), 0, 1) * np.clip((n - np.arange(n)) / (.1 * SR), 0, 1)
+    return x * amp * fade
+
+
+def pencil(v=0):
+    return _scratch(2.0, 11)
+
+
+def write(v=0):
+    return _scratch(max(.4, v / 100), 23) * .8
+
+
+def paper(v=0):
+    x = _lp(_band_noise(.5, 120, 4000), 1500)
+    t = _t(.5)
+    return x / (np.abs(x).max() + 1e-9) * np.sin(np.pi * t / .5) ** 1.5
+
+
+SFX = dict(pencil=pencil, write=write, paper=paper, click=click, pop=pop, blip=blip, tick=tick, scan=scan, whoosh=whoosh, swish=swish,
            thud=thud, boom=boom, chime=chime)
-PAN = dict(click=.15, pop=0, blip=-.2, tick=.2, scan=.25, whoosh=0, swish=-.15, thud=0, boom=0, chime=0)
+PAN = dict(pencil=.1, write=-.1, paper=0, click=.15, pop=0, blip=-.2, tick=.2, scan=.25, whoosh=0, swish=-.15, thud=0, boom=0, chime=0)
 
 
 # ---------- musikbädd ----------

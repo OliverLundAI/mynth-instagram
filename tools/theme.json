@@ -15,6 +15,23 @@
       "2026-10-31",
       "2026-11-01"
     ],
-    "panorama": "series/mintsol.png"
+    "panorama": "series/mintsol.png",
+    "cartoons": {
+      "2026-10-30": {
+        "file": "reel/cartoons/2026-10-30.png",
+        "caption": "”Jag ser en leverantör i er framtid. Tyvärr inte han bakom draperiet.”",
+        "alt": "Skämtteckning: en spåkvinna med kristallkula talar med en kund, medan en företagare i kostym tittar fram bakom ett draperi."
+      },
+      "2026-10-31": {
+        "file": "reel/cartoons/2026-10-31.png",
+        "caption": "”Spegel, spegel på väggen där – vem ska kunderna välja här?”",
+        "alt": "Skämtteckning: en företagsledare står framför en väggspegel, men spegelbilden är en annan, nöjd person som vinkar."
+      },
+      "2026-11-01": {
+        "file": "reel/cartoons/2026-11-01.png",
+        "caption": "”Om just er har jag bara den här broschyren.”",
+        "alt": "Skämtteckning: en vänlig robot i ett bibliotek håller upp en tunn broschyr, medan hyllorna bakom är fyllda med tjocka böcker."
+      }
+    }
   }
 }

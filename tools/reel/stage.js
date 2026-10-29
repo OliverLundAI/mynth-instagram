@@ -357,6 +357,61 @@ SCENES.cta = (p, ctx) => {
   };
 };
 
+// 7. Skämtteckning (stil: enrutad tidningsteckning, tusch och grå lavering på vitt papper).
+//    Teckningen är en färdig bild; den "ritas fram" genom att tuschlinjerna dyker upp först och
+//    laveringen sedan, och bildtexten skrivs för hand under.  params: src, caption (från theme.json)
+SCENES.cartoon = (p, ctx) => {
+  const paper = div('paper'); place(paper, 0, 0, W, H);
+  const head = div('chead', paper, `<svg width="76" height="53" viewBox="0 0 348 243"><polygon fill="${INK}" points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 186.5,0 131,168 75.5,0"/><circle fill="${MINT}" cx="324" cy="219" r="24"/></svg><i></i><span>${esc(ctx.seriesTitle || '')}</span>`);
+  place(head, 0, 250, W);
+  const img = ctx.images[p.src];
+  const BOX = 940, BY = 380;
+  const sc = Math.min(BOX / img.naturalWidth, 1000 / img.naturalHeight);
+  const cw = Math.round(img.naturalWidth * sc), ch = Math.round(img.naturalHeight * sc);
+  const cv = document.createElement('canvas'); cv.width = cw; cv.height = ch; paper.appendChild(cv);
+  place(cv, (W - cw) / 2, BY, cw, ch);
+  const g = cv.getContext('2d');
+  g.imageSmoothingQuality = 'high'; g.fillStyle = '#fff'; g.fillRect(0, 0, cw, ch); g.drawImage(img, 0, 0, cw, ch);
+  const src = g.getImageData(0, 0, cw, ch), sd = src.data;
+  const out = g.createImageData(cw, ch), od = out.data;
+  const N = cw * ch, dark = new Float32Array(N), sweep = new Float32Array(N);
+  for (let y = 0, i = 0; y < ch; y++) for (let x = 0; x < cw; x++, i++) {
+    const L = (.299 * sd[i * 4] + .587 * sd[i * 4 + 1] + .114 * sd[i * 4 + 2]) / 255;
+    dark[i] = 1 - L;
+    const n = .5 + .25 * Math.sin(x * .013 + Math.sin(y * .021) * 2) + .25 * Math.sin(y * .017 + Math.sin(x * .011) * 2);
+    sweep[i] = .62 * (.55 * x / cw + .45 * y / ch) + .38 * n;
+  }
+  const cap = div('ccap', paper); place(cap, 90, BY + ch + 50, W - 180);
+  const chars = [...String(p.caption || '')].map(c => { const e = document.createElement('span'); e.textContent = c; cap.appendChild(e); return e; });
+  const INK0 = 700, INKD = 2000, WASH0 = 2000, WASHD = 1600, CAP0 = 3600, CH = 32;
+  const capEnd = CAP0 + chars.length * CH;
+  let last = -1;
+  const draw = (r1, r2) => {
+    const key = Math.round(r1 * 400) * 1000 + Math.round(r2 * 400);
+    if (key === last) return; last = key;
+    for (let i = 0; i < N; i++) {
+      const s = sweep[i];
+      let m = clamp((r2 - s) / .12);
+      if (dark[i] > .45) m = Math.max(m, clamp((r1 - s) / .05));
+      const j = i * 4;
+      od[j] = 255 - (255 - sd[j]) * m; od[j + 1] = 255 - (255 - sd[j + 1]) * m; od[j + 2] = 255 - (255 - sd[j + 2]) * m; od[j + 3] = 255;
+    }
+    g.putImageData(out, 0, 0);
+  };
+  return {
+    duration: capEnd + 2600,
+    cues: [[0, 'paper', .7], [INK0, 'pencil', .55], [CAP0, 'write', .45, Math.round(chars.length * CH / 10)], [capEnd + 150, 'tick', .25]],
+    overflow: BY + ch + 50 + cap.offsetHeight > 1640,
+    render(t) {
+      set(paper, { y: lerp(H, 0, E.out5(prog(t, 0, 550))) });
+      const a = E.out(prog(t, 350, 500)); set(head, { o: a, y: lerp(20, 0, a) });
+      draw(lerp(-.05, 1.12, E.inout(prog(t, INK0, INKD))), lerp(-.15, 1.2, E.inout(prog(t, WASH0, WASHD))));
+      cv.style.transform = `scale(${1 + .03 * prog(t, 0, capEnd + 2600)})`;
+      chars.forEach((c, i) => { c.style.opacity = t >= CAP0 + i * CH ? 1 : 0; });
+    },
+  };
+};
+
 window.buildScene = (type, params, ctx) => {
   const make = SCENES[type];
   if (!make) throw new Error('okänd scen: ' + type);

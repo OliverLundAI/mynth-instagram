@@ -17,10 +17,12 @@ Skriver bredvid post.json:
   {"type":"checklist", "caption":"...", "items":["...", ...]}   2–4 punkter som bockas av
   {"type":"text", "title":"...", "sub":"..."}              kort påstående i stor text
   {"type":"quote", "quote":"...", "by":"Mynth"}            eget påstående
+  {"type":"cartoon"}        dagens skämtteckning: tools/theme.json -> series.cartoons[datum] = {file, caption, alt}.
+        Tuschlinjerna ritas fram, sedan laveringen, och bildtexten skrivs för hand under. Saknas filen avbryts körningen.
   {"type":"cta", "title":"Få er", "em":"synlighetsanalys.", "url":"mynth.se"}   alltid sist
 Avbryter med RENDERFEL om text inte får plats.
 """
-import json, pathlib, shutil, subprocess, sys
+import base64, json, pathlib, shutil, subprocess, sys
 
 TOOLS = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(TOOLS))
@@ -62,6 +64,7 @@ def main(spec_path):
     k = len(dates) - 1 - dates.index(post["date"])  # senast publicerad hamnar längst till vänster
     ctx = {
         "kicker": render.series_label(post),
+        "seriesTitle": ser.get("title", ""),
         "panelSvg": f'<g class="sun">{panorama.sun_svg(k)}</g><g class="ptxt">{panorama.texts_svg(k)}</g>',
         "sunSvg": f'<g class="sun">{panorama.sun_svg(k)}</g>',
     }
@@ -87,7 +90,17 @@ def main(spec_path):
             pg.evaluate("document.fonts.ready.then(()=>1)")
             pg.wait_for_timeout(150)
             params = {key: v for key, v in s.items() if key != "type"}
-            info = pg.evaluate("([t, p, c]) => { window.S = buildScene(t, p, c); return {d: S.duration, cues: S.cues, o: !!S.overflow}; }",
+            if s["type"] == "cartoon":
+                c = (ser.get("cartoons") or {}).get(post["date"])
+                f = TOOLS / c["file"] if c else None
+                if not f or not f.exists():
+                    sys.exit(f"Teckningen för {post['date']} saknas ({c['file'] if c else 'ingen post i series.cartoons'}).")
+                mime = "image/png" if f.suffix.lower() == ".png" else "image/jpeg"
+                # som data-URL, så att canvas får läsa pixlarna (file:// räknas som annat ursprung)
+                params = {"src": f"data:{mime};base64," + base64.b64encode(f.read_bytes()).decode(), "caption": c["caption"]}
+                pg.evaluate("""src => new Promise((ok, err) => { const i = new Image(); i.onload = () => { window.IMAGES = {[src]: i}; ok(); };
+                               i.onerror = () => err('kunde inte läsa teckningen'); i.src = src; })""", params["src"])
+            info = pg.evaluate("([t, p, c]) => { c.images = window.IMAGES || {}; window.S = buildScene(t, p, c); return {d: S.duration, cues: S.cues, o: !!S.overflow}; }",
                                [s["type"], params, dict(ctx, last=i == len(slides))])
             if info["o"]:
                 problems.append(f"scen {i} ({s['type']}): texten får inte plats")

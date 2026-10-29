@@ -57,18 +57,12 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 
 ## 6. Serier (tre-i-en)
 
-- En serie är tre inlägg i följd som publiceras som Reels. Deras omslag bildar tillsammans en sammanhängande bild över en hel rad i profilrutnätet: Mintsolen, en stor mintgrön skiva som går in uppifrån över svart (WHOOP-inspirerat delat rutnät). Serien definieras i `tools/theme.json` under `series` (titel, datum, panoramabild).
-- Omslaget, ljudet och animationerna skapas automatiskt av `tools/video.py`. Scentyperna beskrivs överst i den filen.
-- Videon ska visa, inte säga. Bygg den på de tecknade demonstrationerna (`ask`, `sources`, `checklist`) och använd `text` eller `quote` högst en gång. Inga slogans eller klyschor. Rubriken (`caption`) beskriver kort vad tittaren ser hända, till exempel ”Er kund frågar AI om er bransch.” Högst två rader, gärna under sju ord.
-- Scenordning: först alltid `{"type": "panel"}` (Mintsolen glider in och landar i omslaget), sist alltid `cta`. Däremellan en eller två scener, så att videon blir ungefär 15–25 sekunder.
-- Välj scener efter dagens pelare, till exempel:
-  - Myt eller verklighet: `ask` med `"outcome": "missing"`, eventuellt följd av `sources` eller en kort `text` som bemöter myten.
-  - Testa själv: `ask` med `"outcome": "question"` och en fråga tittaren kan ställa, följd av `checklist` med vad de ska titta efter i svaret.
-  - Tanke: `sources`, följd av en `quote` med Mynths eget påstående.
-- Frågan i `ask` gäller en bransch eller ett behov, aldrig ett namngivet företag. Högst cirka 55 tecken. Svarets alternativ visas som anonyma rader och får aldrig namnges.
-- Eftersom omslaget saknar rubrik bär bildtextens första rad hela kroken. Den ska kunna stå ensam.
-- `alt` skrivs en per scen (vad som visas). För panelen: ”Mintgrön skiva som går in uppifrån över svart bakgrund.” och texten som syns på just den delen: första datumet ”Text: mynth.se”, andra ”Text: Rekommenderar AI er eller konkurrenten?”, tredje ”Text: Synas i AI”.
-- Varje inlägg följer sin veckodags pelare och alla regler ovan, och ska fungera fristående. Hänvisa inte till andra delar och lova inte när nästa del kommer.
-- Serieetiketten (t.ex. ”Synas i AI · Del 1/3”) läggs på scenerna automatiskt. Skriv den inte i slides.
+- En serie är tre inlägg i följd som publiceras som Reels. Deras omslag bildar tillsammans en sammanhängande bild över en hel rad i profilrutnätet: Mintsolen, en stor mintgrön skiva som går in uppifrån över svart. Serien definieras i `tools/theme.json` under `series` (titel, datum, panoramabild, teckningar).
+- Varje seriedag bygger på en färdig skämtteckning (tusch och grå lavering, enrutad tidningsteckning) med en fast bildtext. Teckningen och bildtexten finns i `series.cartoons` för datumet. Ändra aldrig skämtet eller bildtexten.
+- `slides` i post.json är exakt: `[{"type": "panel"}, {"type": "cartoon"}, {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}]`. Videon (Mintsolen, teckningen som ritas fram, handskriven bildtext, avslutning, ljud) skapas automatiskt av `tools/video.py`.
+- `alt` har tre rader: panelen (”Mintgrön skiva som går in uppifrån över svart bakgrund.”), teckningens `alt` från theme.json följt av ”Text: ” och bildtexten, och avslutningen (”Text: Få er synlighetsanalys. mynth.se”).
+- Instagram-bildtexten följer dagens pelare. Första raden är en egen krok som knyter an till teckningen utan att förklara skämtet. Brödtexten förklarar sakfrågan bakom skämtet enligt reglerna ovan.
+- Varje inlägg ska fungera fristående. Hänvisa inte till andra delar och lova inte när nästa del kommer.
 - Bildtexten avslutas, före hashtaggarna, med raden ”Del 1/3 i serien Synas i AI.” (rätt delnummer).
+- Saknas dagens teckning avbryter `tools/video.py`. Publicera då inte, logga orsaken och avsluta.
 - Publicera exakt ett inlägg per seriedag. Ett extra eller saknat inlägg förskjuter bilden i rutnätet.
