@@ -21,4 +21,4 @@ Mynth ritar själv i en enkel tuschstil. Källfilerna ligger i `src/` (SVG) och 
 - Kvadratisk eller liggande, minst 1500 px bred, vit bakgrund, svart tusch och grå lavering.
 - Ingen text, ingen signatur, inga logotyper, inga riktiga personer eller varumärken.
 - Egen eller fritt licensierad bild, aldrig en kopia av någon annans teckning.
-- Saknas dagens fil när den schemalagda körningen startar (07:32) avbryts körningen och loggas, och inget publiceras.
+- Saknas dagens fil när den schemalagda körningen startar (08:52, för publicering runt 09:00) avbryts körningen och loggas, och inget publiceras.
