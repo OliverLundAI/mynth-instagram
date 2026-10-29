@@ -26,6 +26,31 @@ TEXTS = [  # (omslag, x i synlig yta, y, ankare, text, klass)
 ]
 
 
+STOPS = [(0, (0x0b, 0x6e, 0x63)), (.55, (0x0b, 0xbf, 0xa6)), (1, (0x9b, 0xf5, 0xe1))]
+
+
+def mix(t):
+    for (a, ca), (b, cb) in zip(STOPS, STOPS[1:]):
+        if t <= b:
+            u = (t - a) / (b - a)
+            return "#" + "".join(f"{round(x + (y - x) * u):02x}" for x, y in zip(ca, cb))
+    return "#9bf5e1"
+
+
+BG = """<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#06332d"/><stop offset=".5" stop-color="#05110f"/><stop offset="1" stop-color="#0a3a40"/>
+</linearGradient>
+<radialGradient id="g1" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#0bbfa6" stop-opacity=".6"/><stop offset="1" stop-color="#0bbfa6" stop-opacity="0"/></radialGradient>
+<radialGradient id="g2" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#3b8be6" stop-opacity=".45"/><stop offset="1" stop-color="#2f7fd8" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="3104" height="1350" fill="url(#bg)"/>
+<ellipse cx="1560" cy="380" rx="900" ry="520" fill="url(#g1)"/>
+<ellipse cx="420" cy="880" rx="760" ry="520" fill="url(#g1)"/>
+<ellipse cx="2700" cy="900" rx="820" ry="560" fill="url(#g2)"/>
+"""
+
+
 def svg():
     out = []
     boxes = []
@@ -44,9 +69,11 @@ def svg():
             if y < 220 or y > 1110:
                 continue
             if r > 4.2:
-                out.append(f'<circle cx="{x}" cy="{y}" r="{r:.1f}" fill="#0bbfa6"/>')
+                # Färg efter storlek: djup teal i kanten, mint i mitten, ljus mint i vågens kärna.
+                t = min(1, (r - 4.2) / 12)
+                out.append(f'<circle cx="{x}" cy="{y}" r="{r:.1f}" fill="{mix(t)}"/>')
             else:
-                out.append(f'<circle cx="{x}" cy="{y}" r="2.6" fill="#2c2c2a"/>')
+                out.append(f'<circle cx="{x}" cy="{y}" r="2.6" fill="#1d4a44" fill-opacity=".7"/>')
     return "\n".join(out)
 
 
@@ -56,11 +83,11 @@ def main(dst):
 @font-face{{font-family:Switzer;src:url({FONTS}/switzer-600.woff2);font-weight:600}}
 *{{margin:0}} body{{background:#000;width:{PW}px;height:{PH}px}}
 text{{font-family:Switzer,Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em}}
-.k{{font-size:30px;font-weight:600;fill:#0bbfa6}}
+.k{{font-size:30px;font-weight:600;fill:#9bf5e1}}
 .t{{font-size:30px;font-weight:600;fill:#f2f2f0}}
-.u{{font-size:30px;font-weight:500;fill:#a6a6a6;text-transform:none;letter-spacing:.06em}}
+.u{{font-size:30px;font-weight:500;fill:#cfeee7;text-transform:none;letter-spacing:.06em}}
 </style></head><body><svg width="{PW}" height="{PH}" viewBox="0 0 {PW} {PH}">
-<rect width="{PW}" height="{PH}" fill="#000"/>{svg()}</svg></body></html>"""
+{BG}{svg()}</svg></body></html>"""
     dst = pathlib.Path(dst).resolve()
     tmp = dst.with_suffix(".html")
     tmp.write_text(html, encoding="utf-8")
