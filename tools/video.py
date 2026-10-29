@@ -18,7 +18,7 @@ Skriver bredvid post.json:
   {"type":"text", "title":"...", "sub":"..."}              kort påstående i stor text
   {"type":"quote", "quote":"...", "by":"Mynth"}            eget påstående
   {"type":"cartoon"}        dagens skämtteckning: tools/theme.json -> series.cartoons[datum] = {file, caption, alt}.
-        Tuschlinjerna ritas fram, sedan laveringen, och bildtexten tonas fram under i Newsreader. Saknas filen avbryts körningen.
+        Tuschlinjerna ritas fram, sedan laveringen, och bildtexten handskrivs under i versaler. Saknas filen avbryts körningen.
   {"type":"cta", "title":"Få er", "em":"synlighetsanalys.", "url":"mynth.se"}   alltid sist
 Avbryter med RENDERFEL om text inte får plats.
 """

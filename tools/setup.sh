@@ -20,6 +20,11 @@ for b in css.split('@font-face')[1:]:
     subprocess.run(['curl', '-sS', '-o', f'fonts/switzer-{w}.woff2', 'https:' + u], check=True)
 PY
 fi
+if [ ! -f fonts/architects-daughter.woff2 ]; then  # handstil för bildtexter till skämtteckningar
+  (cd .cache && npm i --silent @fontsource/architects-daughter >/dev/null 2>&1)
+  cp .cache/node_modules/@fontsource/architects-daughter/files/architects-daughter-latin-400-normal.woff2 fonts/architects-daughter.woff2
+  cp .cache/node_modules/@fontsource/architects-daughter/files/architects-daughter-latin-ext-400-normal.woff2 fonts/architects-daughter-ext.woff2
+fi
 python3 -c "import playwright, PIL, numpy" 2>/dev/null || pip install --break-system-packages -q playwright pillow numpy
 # ffmpeg för Reels (tools/video.py). Saknas det används imageio-ffmpeg, som har en färdig binär.
 command -v ffmpeg >/dev/null || python3 -c "import imageio_ffmpeg" 2>/dev/null || pip install --break-system-packages -q imageio-ffmpeg

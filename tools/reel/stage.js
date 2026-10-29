@@ -383,13 +383,10 @@ SCENES.cartoon = (p, ctx) => {
     sweep[i] = .62 * (.55 * x / cw + .45 * y / ch) + .38 * n;
   }
   const cap = div('ccap', paper); place(cap, 90, BY + ch + 50, W - 180);
-  // bildtexten sätts i Newsreader (Mynths serif) och tonas fram ord för ord, som en klassisk tidningsbildtext
-  const words = String(p.caption || '').split(/\s+/).filter(Boolean).map((w, i) => {
-    if (i) cap.appendChild(document.createTextNode(' '));
-    const e = document.createElement('span'); e.textContent = w; cap.appendChild(e); return e;
-  });
-  const INK0 = 700, INKD = 2000, WASH0 = 2000, WASHD = 1600, CAP0 = 3600, WD = 110;
-  const capEnd = CAP0 + words.length * WD + 300;
+  // bildtexten handskrivs bokstav för bokstav i versaler, som under en tidningsteckning
+  const chars = [...String(p.caption || '')].map(c => { const e = document.createElement('span'); e.textContent = c; cap.appendChild(e); return e; });
+  const INK0 = 700, INKD = 2000, WASH0 = 2000, WASHD = 1600, CAP0 = 3600, CH = 32;
+  const capEnd = CAP0 + chars.length * CH;
   // papperets färg (Mynths benvita), teckningen multipliceras på det så att bildens vita blir papper
   const PR = 250, PG = 249, PB = 245;
   let last = -1;
@@ -407,14 +404,14 @@ SCENES.cartoon = (p, ctx) => {
   };
   return {
     duration: capEnd + 2600,
-    cues: [[0, 'paper', .7], [INK0, 'pencil', .55], [CAP0, 'swish', .3], [capEnd, 'tick', .25]],
+    cues: [[0, 'paper', .7], [INK0, 'pencil', .55], [CAP0, 'write', .45, Math.round(chars.length * CH / 10)], [capEnd + 150, 'tick', .25]],
     overflow: BY + ch + 50 + cap.offsetHeight > 1640,
     render(t) {
       set(paper, { y: lerp(H, 0, E.out5(prog(t, 0, 550))) });
       const a = E.out(prog(t, 350, 500)); set(head, { o: a, y: lerp(20, 0, a) });
       draw(lerp(-.05, 1.12, E.inout(prog(t, INK0, INKD))), lerp(-.15, 1.2, E.inout(prog(t, WASH0, WASHD))));
       cv.style.transform = `scale(${1 + .03 * prog(t, 0, capEnd + 2600)})`;
-      words.forEach((w, i) => { const v = E.out(prog(t, CAP0 + i * WD, 380)); w.style.opacity = v; w.style.transform = `translateY(${lerp(14, 0, v)}px)`; });
+      chars.forEach((c, i) => { c.style.opacity = t >= CAP0 + i * CH ? 1 : 0; });
     },
   };
 };
