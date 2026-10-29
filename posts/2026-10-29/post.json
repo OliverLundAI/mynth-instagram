@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-29",
+  "pillar": "Vad vi gör",
+  "hook": "Varje obesvarad fråga om er är en lucka i AI-svaren.",
+  "caption": "Varje obesvarad fråga om er är en lucka i AI-svaren.\n\nEra kunder ställer konkreta frågor till AI-assistenter: vad passar vårt behov, hur skiljer sig alternativen, vem bör vi välja.\n\nSaknas ett tydligt svar om er på nätet, får kunden ett svar utan er. Risken är inte att ni beskrivs fel, utan att ni inte nämns alls.\n\nInnehåll är ett av Mynths tre spår. Vi skriver artiklar och beslutssidor som fyller luckor där AI saknar svar om er.\n\n→ Artiklar som besvarar frågorna era kunder ställer\n→ Beslutssidor som ger tydliga underlag när kunder jämför alternativ\n→ Daglig mätning som visar var luckorna finns\n\nFörsta steget är en synlighetsanalys, skräddarsydd efter era mål. Länk i bio.\n\n#GEO #AIsynlighet #Innehållsmarknadsföring #Marknadsföring",
+  "alt": [
+    "Text: Där AI saknar svar om er, skriver vi innehållet. Mintgröna prickar.",
+    "Text: Innehåll som fyller luckorna. Ett av Mynths tre spår. Artiklar: svar på frågorna era kunder ställer. Beslutssidor: tydliga underlag när kunder jämför alternativ.",
+    "Text: Mätningen visar var luckorna finns. Daglig bevakning visar i vilka AI-svar ni saknas.",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {"type": "cover", "title": "Där AI saknar\nsvar om er,", "em": "skriver vi innehållet."},
+    {"type": "text", "title": "Innehåll som fyller luckorna.", "sub": "Ett av Mynths tre spår.", "rows": [
+      ["Artiklar", "Svar på frågorna era kunder ställer."],
+      ["Beslutssidor", "Tydliga underlag när kunder jämför alternativ."]
+    ]},
+    {"type": "text", "title": "Mätningen visar var luckorna finns.", "sub": "Daglig bevakning visar i vilka AI-svar ni saknas."},
+    {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}
+  ]
+}
