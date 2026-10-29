@@ -1,15 +1,15 @@
 @font-face{font-family:Switzer;src:url(FONTS/switzer-400.woff2);font-weight:400}
 @font-face{font-family:Switzer;src:url(FONTS/switzer-500.woff2);font-weight:500}
 @font-face{font-family:Switzer;src:url(FONTS/switzer-600.woff2);font-weight:600}
-@font-face{font-family:Hand;src:url(FONTS/architects-daughter.woff2)}
-@font-face{font-family:Hand;src:url(FONTS/architects-daughter-ext.woff2);unicode-range:U+0100-024F,U+2013-2014}
+@font-face{font-family:Newsreader;src:url(FONTS/newsreader-normal.woff2);font-weight:200 800;font-style:normal}
+@font-face{font-family:Newsreader;src:url(FONTS/newsreader-italic.woff2);font-weight:200 800;font-style:italic}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;
   font-family:Switzer,'Helvetica Neue',Arial,sans-serif;color:#fff;font-feature-settings:'pnum','lnum'}
 #stage>*{position:absolute;transform-origin:center}
 .kick{font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0bbfa6}
-.cap{font-size:58px;font-weight:600;line-height:1.08;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+.cap{font-family:Newsreader,Georgia,serif;font-size:66px;font-weight:400;line-height:1.08;letter-spacing:-.01em;color:#fff;font-variation-settings:'opsz' 72;text-wrap:balance}
 /* telefonen */
 .phone{background:#1b1b1b;border:2px solid #2d2d2b;border-radius:78px;padding:16px}
 .screen{position:relative;width:100%;height:100%;background:#faf9f5;border-radius:62px;overflow:hidden;color:#141413}
@@ -51,15 +51,16 @@ html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
 .item svg{flex:none}
 .item span{font-size:46px;line-height:1.25;font-weight:500;color:#f2f1ec}
 /* text och avslutning */
-.big{font-size:96px;font-weight:600;line-height:.98;letter-spacing:-.025em;text-transform:uppercase;color:#fff;word-spacing:.06em}
-.big em{font-style:normal;color:#0bbfa6}
-.sub2{font-size:38px;line-height:1.4;color:#b0aea5}
-.url2{font-size:52px;font-weight:600;color:#fff}
+.big{font-family:Newsreader,Georgia,serif;font-size:116px;font-weight:400;line-height:1.04;letter-spacing:-.01em;color:#faf9f5;font-variation-settings:'opsz' 72;text-wrap:balance}
+.big em{font-style:italic;color:#b0aea5}
+.sub2{font-size:38px;line-height:1.45;color:#b0aea5}
+.url2{font-family:Newsreader,Georgia,serif;font-size:64px;font-weight:400;color:#faf9f5;font-variation-settings:'opsz' 48}
 .dot{border-radius:50%;background:#0bbfa6}
 /* skämtteckning */
-.paper{background:#fff;overflow:hidden}
+.paper{background:#faf9f5;overflow:hidden}
 .paper>*{position:absolute}
-.chead{display:flex;align-items:center;justify-content:center;gap:26px;color:#141413;font-size:46px;font-weight:500;letter-spacing:-.01em}
+.chead{display:flex;align-items:center;justify-content:center;gap:26px;color:#141413;font-family:Newsreader,Georgia,serif;font-size:54px;font-weight:400;letter-spacing:-.01em;font-variation-settings:'opsz' 48}
 .chead i{display:block;width:3px;height:54px;background:#141413}
 .paper canvas{transform-origin:center}
-.ccap{font-family:Hand,'Comic Sans MS',cursive;font-size:40px;line-height:1.45;letter-spacing:.06em;text-transform:uppercase;color:#1e1e1e;text-align:center;text-wrap:balance}
+.ccap{font-family:Newsreader,Georgia,serif;font-size:46px;line-height:1.35;color:#141413;text-align:center;text-wrap:balance;font-variation-settings:'opsz' 36}
+.ccap span{display:inline-block}

@@ -67,7 +67,7 @@ blockquote{{font-family:Newsreader,Georgia,serif;font-size:84px;line-height:1.12
 # M-ikonen från Mynths designsystem (artifact "Mynth LinkedIn-banner", Profilbild)
 LOGO = ('<svg class="logo" viewBox="0 0 348 243" aria-label="Mynth"><polygon style="fill:var(--logo)" '
         'points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 '
-        '186.5,0 131,168 75.5,0"/><circle fill="#56bca6" cx="324" cy="219" r="24"/></svg>')
+        '186.5,0 131,168 75.5,0"/><circle fill="#0bbfa6" cx="324" cy="219" r="24"/></svg>')
 
 # Teman. Ljust är standard. "theme" i post.json styr; saknas det används tools/theme.json:
 # datum i en serie ("series" -> "dates") -> black, datum i "dark_dates" -> dark, annars light.

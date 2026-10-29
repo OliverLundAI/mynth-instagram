@@ -59,7 +59,7 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 
 - En serie är tre inlägg i följd som publiceras som Reels. Deras omslag bildar tillsammans en sammanhängande bild över en hel rad i profilrutnätet: Mintsolen, en stor mintgrön skiva som går in uppifrån över svart. Serien definieras i `tools/theme.json` under `series` (titel, datum, panoramabild, teckningar).
 - Varje seriedag bygger på en färdig skämtteckning (tusch och grå lavering, enrutad tidningsteckning) med en fast bildtext. Teckningen och bildtexten finns i `series.cartoons` för datumet. Ändra aldrig skämtet eller bildtexten.
-- `slides` i post.json är exakt: `[{"type": "panel"}, {"type": "cartoon"}, {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}]`. Videon (Mintsolen, teckningen som ritas fram, handskriven bildtext, avslutning, ljud) skapas automatiskt av `tools/video.py`.
+- `slides` i post.json är exakt: `[{"type": "panel"}, {"type": "cartoon"}, {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}]`. Videon (Mintsolen, teckningen som ritas fram, bildtexten i Mynths serif Newsreader, avslutning, ljud) skapas automatiskt av `tools/video.py`.
 - `alt` har tre rader: panelen (”Mintgrön skiva som går in uppifrån över svart bakgrund.”), teckningens `alt` från theme.json följt av ”Text: ” och bildtexten, och avslutningen (”Text: Få er synlighetsanalys. mynth.se”).
 - Instagram-bildtexten följer dagens pelare. Första raden är en egen krok som knyter an till teckningen utan att förklara skämtet. Brödtexten förklarar sakfrågan bakom skämtet enligt reglerna ovan.
 - Varje inlägg ska fungera fristående. Hänvisa inte till andra delar och lova inte när nästa del kommer.

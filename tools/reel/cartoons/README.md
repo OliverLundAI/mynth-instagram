@@ -1,7 +1,7 @@
 # Skämtteckningar till serien ”Synas i AI”
 
 Varje seriedag visar en enrutad skämtteckning: tusch och grå lavering på vitt papper, som en klassisk
-tidningsteckning. Videon ritar fram tuschlinjerna, sedan laveringen, och skriver bildtexten för hand under.
+tidningsteckning. Videon ritar fram tuschlinjerna, sedan laveringen, och tonar fram bildtexten under i Mynths serif (Newsreader). All typografi i videon följer Mynths profil: Newsreader för rubriker och bildtexter, Switzer för etiketter, mint (#0BBFA6) som enda accent och logotypens prick.
 Bildtexten läggs på av `tools/video.py` (från `tools/theme.json` → `series.cartoons`), så teckningen ska inte ha någon text.
 
 ## Leverans

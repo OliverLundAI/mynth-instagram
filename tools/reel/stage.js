@@ -363,6 +363,7 @@ SCENES.cta = (p, ctx) => {
 SCENES.cartoon = (p, ctx) => {
   const paper = div('paper'); place(paper, 0, 0, W, H);
   const head = div('chead', paper, `<svg width="76" height="53" viewBox="0 0 348 243"><polygon fill="${INK}" points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 186.5,0 131,168 75.5,0"/><circle fill="${MINT}" cx="324" cy="219" r="24"/></svg><i></i><span>${esc(ctx.seriesTitle || '')}</span>`);
+  head.querySelector('circle').setAttribute('fill', MINT);
   place(head, 0, 250, W);
   const img = ctx.images[p.src];
   const BOX = 940, BY = 380;
@@ -382,9 +383,15 @@ SCENES.cartoon = (p, ctx) => {
     sweep[i] = .62 * (.55 * x / cw + .45 * y / ch) + .38 * n;
   }
   const cap = div('ccap', paper); place(cap, 90, BY + ch + 50, W - 180);
-  const chars = [...String(p.caption || '')].map(c => { const e = document.createElement('span'); e.textContent = c; cap.appendChild(e); return e; });
-  const INK0 = 700, INKD = 2000, WASH0 = 2000, WASHD = 1600, CAP0 = 3600, CH = 32;
-  const capEnd = CAP0 + chars.length * CH;
+  // bildtexten sätts i Newsreader (Mynths serif) och tonas fram ord för ord, som en klassisk tidningsbildtext
+  const words = String(p.caption || '').split(/\s+/).filter(Boolean).map((w, i) => {
+    if (i) cap.appendChild(document.createTextNode(' '));
+    const e = document.createElement('span'); e.textContent = w; cap.appendChild(e); return e;
+  });
+  const INK0 = 700, INKD = 2000, WASH0 = 2000, WASHD = 1600, CAP0 = 3600, WD = 110;
+  const capEnd = CAP0 + words.length * WD + 300;
+  // papperets färg (Mynths benvita), teckningen multipliceras på det så att bildens vita blir papper
+  const PR = 250, PG = 249, PB = 245;
   let last = -1;
   const draw = (r1, r2) => {
     const key = Math.round(r1 * 400) * 1000 + Math.round(r2 * 400);
@@ -394,20 +401,20 @@ SCENES.cartoon = (p, ctx) => {
       let m = clamp((r2 - s) / .12);
       if (dark[i] > .45) m = Math.max(m, clamp((r1 - s) / .05));
       const j = i * 4;
-      od[j] = 255 - (255 - sd[j]) * m; od[j + 1] = 255 - (255 - sd[j + 1]) * m; od[j + 2] = 255 - (255 - sd[j + 2]) * m; od[j + 3] = 255;
+      od[j] = PR * (1 - m * (1 - sd[j] / 255)); od[j + 1] = PG * (1 - m * (1 - sd[j + 1] / 255)); od[j + 2] = PB * (1 - m * (1 - sd[j + 2] / 255)); od[j + 3] = 255;
     }
     g.putImageData(out, 0, 0);
   };
   return {
     duration: capEnd + 2600,
-    cues: [[0, 'paper', .7], [INK0, 'pencil', .55], [CAP0, 'write', .45, Math.round(chars.length * CH / 10)], [capEnd + 150, 'tick', .25]],
+    cues: [[0, 'paper', .7], [INK0, 'pencil', .55], [CAP0, 'swish', .3], [capEnd, 'tick', .25]],
     overflow: BY + ch + 50 + cap.offsetHeight > 1640,
     render(t) {
       set(paper, { y: lerp(H, 0, E.out5(prog(t, 0, 550))) });
       const a = E.out(prog(t, 350, 500)); set(head, { o: a, y: lerp(20, 0, a) });
       draw(lerp(-.05, 1.12, E.inout(prog(t, INK0, INKD))), lerp(-.15, 1.2, E.inout(prog(t, WASH0, WASHD))));
       cv.style.transform = `scale(${1 + .03 * prog(t, 0, capEnd + 2600)})`;
-      chars.forEach((c, i) => { c.style.opacity = t >= CAP0 + i * CH ? 1 : 0; });
+      words.forEach((w, i) => { const v = E.out(prog(t, CAP0 + i * WD, 380)); w.style.opacity = v; w.style.transform = `translateY(${lerp(14, 0, v)}px)`; });
     },
   };
 };
