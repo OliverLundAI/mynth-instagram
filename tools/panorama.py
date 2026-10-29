@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tre-i-en (WHOOP-inspirerat delat rutnät): en panoramabild som delas på tre inläggs omslag.
 
-Användning: python3 tools/panorama.py tools/series/<namn>.jpg
+Användning: python3 tools/panorama.py tools/series/<namn>.png
 Bilden är 3104x1350. Omslag k (0 = vänster i profilrutnätet) = x k*1012 .. k*1012+1080.
 Instagram visar 4:5-inlägg som 3:4 i profilrutnätet (beskärs 34 px per sida), så de synliga
 delarna (k*1012+34 .. k*1012+1046) möts sömlöst över raden.
@@ -37,18 +37,12 @@ def mix(t):
     return "#9bf5e1"
 
 
-BG = """<defs>
-<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".25" stop-color="#000" stop-opacity=".15"/>
-  <stop offset=".62" stop-color="#000" stop-opacity="1"/><stop offset="1" stop-color="#000" stop-opacity="1"/>
-</linearGradient>
-<linearGradient id="hue" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="#0bbfa6"/><stop offset=".5" stop-color="#11a6a0"/><stop offset="1" stop-color="#2f7fd8"/>
-</linearGradient>
-</defs>
-<rect width="3104" height="1350" fill="url(#hue)"/>
-<rect width="3104" height="1350" fill="url(#fade)"/>
-"""
+# Färg uppifrån i skarpa, platta band som trappar ner till svart. Inga mjuka toningar.
+BANDS = ["#0bbfa6", "#099c88", "#07786a", "#05554b", "#03332d", "#011714"]
+BAND_H = 76
+BG = (f'<rect width="{PW}" height="{PH}" fill="#000"/>'
+      + "".join(f'<rect y="{i * BAND_H}" width="{PW}" height="{BAND_H}" fill="{c}"/>' for i, c in enumerate(BANDS)))
+
 
 
 def svg():
@@ -93,15 +87,16 @@ text{{font-family:Switzer,Arial,sans-serif;text-transform:uppercase;letter-spaci
     tmp.write_text(html, encoding="utf-8")
     with sync_playwright() as p:
         b = p.chromium.launch()
-        pg = b.new_page(viewport={"width": PW, "height": PH})
+        pg = b.new_page(viewport={"width": PW, "height": PH}, device_scale_factor=2)
         pg.goto(tmp.as_uri())
         pg.evaluate("document.fonts.ready.then(()=>1)")
         pg.wait_for_timeout(300)
-        png = dst.with_suffix(".png")
+        png = dst.with_name(dst.stem + "_2x.png")
         pg.screenshot(path=str(png))
         b.close()
     from PIL import Image
-    Image.open(png).convert("RGB").save(dst, "JPEG", quality=94, optimize=True)
+    # Renderas i dubbel upplösning och skalas ner för skarpa kanter. Sparas förlustfritt (PNG).
+    Image.open(png).convert("RGB").resize((PW, PH), Image.LANCZOS).save(dst, "PNG", optimize=True)
     png.unlink(); tmp.unlink()
     print(dst)
 

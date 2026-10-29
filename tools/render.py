@@ -153,6 +153,9 @@ def esc(t):
 
 
 KICKER = None  # serieetikett, sätts i main()
+# Skärpa: sidan renderas i dubbel upplösning och skalas ner; JPEG utan färgundersampling (4:4:4),
+# så att mint mot mörk bakgrund inte blir suddig i kanterna.
+JPEG = dict(quality=95, subsampling=0, optimize=True)
 
 
 def chrome(i, n, big, hint):
@@ -209,11 +212,11 @@ def main(spec_path):
     out, problems = [], []
     with sync_playwright() as p:
         b = p.chromium.launch()
-        pg = b.new_page(viewport={"width": W, "height": H})
+        pg = b.new_page(viewport={"width": W, "height": H}, device_scale_factor=2)
         for i, s in enumerate(slides, 1):
             if s["type"] == "panel":
                 jpg = spec_path.parent / f"{i:02d}.jpg"
-                panel_image(post).save(jpg, "JPEG", quality=92, optimize=True)
+                panel_image(post).save(jpg, "JPEG", **JPEG)
                 out.append(str(jpg))
                 continue
             hp = spec_path.parent / f"_{i:02d}.html"
@@ -228,7 +231,7 @@ def main(spec_path):
             png = spec_path.parent / f"_{i:02d}.png"
             pg.screenshot(path=str(png))
             jpg = spec_path.parent / f"{i:02d}.jpg"
-            Image.open(png).convert("RGB").save(jpg, "JPEG", quality=92, optimize=True)
+            Image.open(png).convert("RGB").resize((W, H), Image.LANCZOS).save(jpg, "JPEG", **JPEG)
             png.unlink(); hp.unlink()
             out.append(str(jpg))
         b.close()
