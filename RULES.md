@@ -63,6 +63,5 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 - `alt` har tre rader: panelen (”Mintgrön skiva som går in uppifrån över svart bakgrund.”), teckningens `alt` från theme.json följt av ”Text: ” och bildtexten, och avslutningen (”Text: Få er synlighetsanalys. mynth.se”).
 - Instagram-bildtexten följer dagens pelare. Första raden är en egen krok som knyter an till teckningen utan att förklara skämtet. Brödtexten förklarar sakfrågan bakom skämtet enligt reglerna ovan.
 - Varje inlägg ska fungera fristående. Hänvisa inte till andra delar och lova inte när nästa del kommer.
-- Bildtexten avslutas, före hashtaggarna, med raden ”Del 1/3 i serien Synas i AI.” (rätt delnummer).
 - Saknas dagens teckning avbryter `tools/video.py`. Publicera då inte, logga orsaken och avsluta.
 - Publicera exakt ett inlägg per seriedag. Ett extra eller saknat inlägg förskjuter bilden i rutnätet.

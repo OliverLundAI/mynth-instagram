@@ -28,7 +28,6 @@ SUN_CY = VIS_Y + round(VIS_H * 2 / 3) - SUN_R   # nedersta punkten två tredjede
 
 TEXT_Y = VIS_Y + round(VIS_H * 0.9)
 TEXTS = [  # (omslag, x i omslaget, ankare, text, klass)
-    (0, 96, "start", "Synas i AI", "k"),
     (1, TW // 2, "middle", "Rekommenderar AI er eller konkurrenten?", "t"),
     (2, TW - 96, "end", "mynth.se", "u"),
 ]

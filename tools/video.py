@@ -63,8 +63,7 @@ def main(spec_path):
         sys.exit("Första scenen ska vara panel och sista cta")
     k = len(dates) - 1 - dates.index(post["date"])  # senast publicerad hamnar längst till vänster
     ctx = {
-        "kicker": render.series_label(post),
-        "seriesTitle": ser.get("title", ""),
+        "kicker": "",  # ingen serieetikett i videon
         "panelSvg": f'<g class="sun">{panorama.sun_svg(k)}</g><g class="ptxt">{panorama.texts_svg(k)}</g>',
         "sunSvg": f'<g class="sun">{panorama.sun_svg(k)}</g>',
     }
@@ -127,12 +126,12 @@ def main(spec_path):
     sfx.mix(cues, seconds, wav, beat_from=2.7)
     mp4 = out_dir / "reel.mp4"
     r = subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-i", str(silent), "-i", str(wav),
-                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
                         "-shortest", "-movflags", "+faststart", str(mp4)])
     silent.unlink(); wav.unlink()
     if r.returncode != 0:
         sys.exit("ffmpeg misslyckades (ljud)")
-    print(json.dumps({"series": ctx["kicker"], "tile": ["vänster", "mitten", "höger"][k], "seconds": round(seconds, 1),
+    print(json.dumps({"series": render.series_label(post), "tile": ["vänster", "mitten", "höger"][k], "seconds": round(seconds, 1),
                       "scenes": [s["type"] for s in slides], "video": str(mp4), "cover": str(out_dir / "cover.jpg")},
                      ensure_ascii=False))
 

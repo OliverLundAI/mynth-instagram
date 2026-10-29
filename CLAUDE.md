@@ -22,7 +22,7 @@ Följ stegen exakt. Om något steg misslyckas: publicera inte, logga felet i LOG
 
 ## 2. Rendera och kontrollera
 - `python3 tools/render.py posts/$DATE/post.json` ger `01.jpg`, `02.jpg` osv.
-- Temat väljs automatiskt från `tools/theme.json`: datum i `series.dates` → `black` (med serieetikett, t.ex. "Synas i AI · Del 1/3"), datum i `dark_dates` → `dark`, annars `light`. Datum i `small_dots_dates` ger små prickar även på cover och cta. Kontrollera att render.py rapporterar rätt tema, prickstorlek och serie. Lägg inte till `theme` i post.json.
+- Temat väljs automatiskt från `tools/theme.json`: datum i `series.dates` → `black` (svart tema), datum i `dark_dates` → `dark`, annars `light`. Datum i `small_dots_dates` ger små prickar även på cover och cta. Kontrollera att render.py rapporterar rätt tema, prickstorlek och serie. Lägg inte till `theme` i post.json.
 - **Serie:** kör i stället `python3 tools/video.py posts/$DATE/post.json` (tar runt en minut). Det ger `reel.mp4` med ljud, `cover.jpg` (dagens tredjedel av Mintsolen)
   och `check-NN.jpg` (en stillbild per scen). Kontrollera att utdata visar rätt serie och rätt del av raden
   (första seriedatumet `höger`, andra `mitten`, tredje `vänster`). Titta på `cover.jpg` och varje `check-NN.jpg` i stället för `NN.jpg`.

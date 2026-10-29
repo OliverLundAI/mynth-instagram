@@ -1,4 +1,4 @@
-# Skämtteckningar till serien ”Synas i AI”
+# Skämtteckningar till serien (tre-i-en)
 
 Varje seriedag visar en enrutad skämtteckning: tusch och grå lavering på vitt papper, som en klassisk
 tidningsteckning. Videon ritar fram tuschlinjerna, sedan laveringen, och handskriver bildtexten under i versaler (Architects Daughter). Övrig typografi följer Mynths profil: Newsreader för rubriker, Switzer för etiketter, mint (#0BBFA6) som enda accent och logotypens prick.

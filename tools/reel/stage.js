@@ -362,7 +362,7 @@ SCENES.cta = (p, ctx) => {
 //    laveringen sedan, och bildtexten skrivs för hand under.  params: src, caption (från theme.json)
 SCENES.cartoon = (p, ctx) => {
   const paper = div('paper'); place(paper, 0, 0, W, H);
-  const head = div('chead', paper, `<svg width="76" height="53" viewBox="0 0 348 243"><polygon fill="${INK}" points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 186.5,0 131,168 75.5,0"/><circle fill="${MINT}" cx="324" cy="219" r="24"/></svg><i></i><span>${esc(ctx.seriesTitle || '')}</span>`);
+  const head = div('chead', paper, `<svg width="104" height="73" viewBox="0 0 348 243"><polygon fill="${INK}" points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 186.5,0 131,168 75.5,0"/><circle fill="${MINT}" cx="324" cy="219" r="24"/></svg>`);
   head.querySelector('circle').setAttribute('fill', MINT);
   place(head, 0, 250, W);
   const img = ctx.images[p.src];

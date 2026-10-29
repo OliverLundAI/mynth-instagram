@@ -25,7 +25,7 @@ if [ ! -f fonts/architects-daughter.woff2 ]; then  # handstil för bildtexter ti
   cp .cache/node_modules/@fontsource/architects-daughter/files/architects-daughter-latin-400-normal.woff2 fonts/architects-daughter.woff2
   cp .cache/node_modules/@fontsource/architects-daughter/files/architects-daughter-latin-ext-400-normal.woff2 fonts/architects-daughter-ext.woff2
 fi
-python3 -c "import playwright, PIL, numpy" 2>/dev/null || pip install --break-system-packages -q playwright pillow numpy
+python3 -c "import playwright, PIL, numpy, scipy" 2>/dev/null || pip install --break-system-packages -q playwright pillow numpy scipy
 # ffmpeg för Reels (tools/video.py). Saknas det används imageio-ffmpeg, som har en färdig binär.
 command -v ffmpeg >/dev/null || python3 -c "import imageio_ffmpeg" 2>/dev/null || pip install --break-system-packages -q imageio-ffmpeg
 ls fonts
