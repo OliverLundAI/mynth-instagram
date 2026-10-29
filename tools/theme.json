@@ -20,17 +20,20 @@
       "2026-10-30": {
         "file": "reel/cartoons/2026-10-30.png",
         "caption": "”Vi har aldrig haft ett snyggare skyltfönster.”",
-        "alt": "Skämtteckning: en stolt butiksägare putsar sitt skyltfönster, medan folk går förbi med blicken i mobilen."
+        "alt": "Skämtteckning: en stolt butiksägare putsar sitt skyltfönster, medan folk går förbi med blicken i mobilen.",
+        "meaning": "Butiksägaren lägger all energi på skyltfönstret, men kunderna tittar inte längre på skyltfönster. De frågar AI i mobilen och går dit svaret pekar. Myten: en snygg webbplats räcker. Verkligheten: om AI inte nämner er spelar skyltfönstret mindre roll."
       },
       "2026-10-31": {
         "file": "reel/cartoons/2026-10-31.png",
         "caption": "”Spegel, spegel på väggen där – vem ska kunderna välja här?”",
-        "alt": "Skämtteckning: en företagsledare står framför en väggspegel, men spegelbilden är en annan, nöjd person som vinkar."
+        "alt": "Skämtteckning: en företagsledare står framför en väggspegel, men spegelbilden är en annan, nöjd person som vinkar.",
+        "meaning": "Sagans spegel svarar alltid sanningsenligt på vem som är vackrast. Här är spegeln AI: företagsledaren frågar vem kunderna ska välja, och spegelbilden är en annan, nöjd person – AI rekommenderar konkurrenten. Testa själv: ställ samma fråga till AI som era kunder gör och se vem som syns."
       },
       "2026-11-01": {
         "file": "reel/cartoons/2026-11-01.png",
         "caption": "”Det är i alla fall vad nätet säger om er.”",
-        "alt": "Skämtteckning: tre robotar viskar vidare om ett företag, den sista berättar något förvrängt för en förskräckt företagare."
+        "alt": "Skämtteckning: tre robotar viskar vidare om ett företag, den sista berättar något förvrängt för en förskräckt företagare.",
+        "meaning": "Som i viskleken förvrängs budskapet för varje led. AI bygger sin bild av ett företag av det som sprids om det på nätet, och när det underlaget är tunt eller utspritt kan beskrivningen som når kunden bli en helt annan än den företaget själv skulle ge."
       }
     }
   }
