@@ -366,7 +366,8 @@ SCENES.cartoon = (p, ctx) => {
   head.querySelector('circle').setAttribute('fill', MINT);
   place(head, 0, 250, W);
   const img = ctx.images[p.src];
-  const BOX = 940, BY = 380;
+  const BOX = 940;
+  let BY = 380;
   const sc = Math.min(BOX / img.naturalWidth, 1000 / img.naturalHeight);
   const cw = Math.round(img.naturalWidth * sc), ch = Math.round(img.naturalHeight * sc);
   const cv = document.createElement('canvas'); cv.width = cw; cv.height = ch; paper.appendChild(cv);
@@ -383,6 +384,9 @@ SCENES.cartoon = (p, ctx) => {
     sweep[i] = .62 * (.55 * x / cw + .45 * y / ch) + .38 * n;
   }
   const cap = div('ccap', paper); place(cap, 90, BY + ch + 50, W - 180);
+  // centrera logotyp + teckning + bildtext lodrätt i det fria fältet (mellan Reels-gränssnittet upptill och nedtill)
+  BY = Math.max(380, Math.round(930 - (ch + 50 + cap.offsetHeight) / 2));
+  cv.style.top = BY + 'px'; cap.style.top = (BY + ch + 50) + 'px'; head.style.top = (BY - 130) + 'px';
   // bildtexten handskrivs bokstav för bokstav i versaler, som under en tidningsteckning
   const chars = [...String(p.caption || '')].map(c => { const e = document.createElement('span'); e.textContent = c; cap.appendChild(e); return e; });
   const INK0 = 700, INKD = 2000, WASH0 = 2000, WASHD = 1600, CAP0 = 3600, CH = 32;

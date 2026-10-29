@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1000 870" data-caption="&quot;Spegel, spegel på väggen där – vem ska kunderna välja här?&quot;">
+<!-- Tecknad av Mynth för serien Synas i AI. Rita i ordning: rum, spegel, kvinnan, spegelbilden. -->
+<g class="wash">
+  <path d="M600 210 Q710 120 820 210 L820 800 L600 800 Z" fill="#ececec"/>
+  <path d="M610 230 L650 230 L610 300 Z M790 640 L815 600 L815 700 Z" fill="#f7f7f7"/>
+  <path d="M330 470 L410 470 L428 700 L318 700 Z" fill="#c9c9c9"/>
+  <path d="M322 700 L424 700 L420 850 L388 850 L372 720 L360 850 L328 850 Z" fill="#a9a9a9"/>
+  <path d="M325 352 C318 300 350 278 385 282 C420 288 432 318 424 344 C412 330 380 326 360 336 C352 360 350 400 340 430 C326 420 322 390 325 352 Z" fill="#8f8f8f"/>
+  <path d="M672 470 L752 470 L760 700 L664 700 Z" fill="#dedede"/>
+  <path d="M60 230 L180 230 L180 330 L60 330 Z" fill="#e2e2e2"/>
+</g>
+<g class="ink" fill="none" stroke="#1e1e1e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- rum -->
+  <path class="ln" d="M30 880 L970 880"/>
+  <path class="ln" d="M30 902 L970 902" stroke-width="3"/>
+  <path class="ln" d="M60 230 L180 230 L180 330 L60 330 Z"/>
+  <path class="ln" d="M74 244 L166 244 L166 316 L74 316 Z" stroke-width="3"/>
+  <path class="ln" d="M86 300 C100 270 112 286 124 262 C134 280 146 270 156 290" stroke-width="3"/>
+  <!-- spegeln -->
+  <path class="ln" d="M580 820 L580 205 Q710 95 840 205 L840 820 Z"/>
+  <path class="ln" d="M600 800 L600 214 Q710 124 820 214 L820 800 Z" stroke-width="3"/>
+  <path class="ln" d="M566 836 L854 836 L846 820 L574 820 Z"/>
+  <path class="ln" d="M690 116 C700 100 720 100 730 116" stroke-width="3"/>
+  <path class="ln" d="M680 86 L740 86 L740 122 L680 122 Z" stroke-width="3.5"/>
+  <path class="ln" d="M697 112 L706 94 L715 112 M701 105 L711 105 M724 94 L724 112" stroke-width="3"/>
+  <path class="ln" d="M596 836 L604 880 M824 836 L816 880"/>
+  <!-- kvinnan -->
+  <path class="ln" d="M424 344 C432 352 436 362 446 372 C438 378 430 378 428 382 C432 388 430 392 426 396 C430 402 428 410 418 414 C410 418 404 422 400 432"/>
+  <path class="ln" d="M325 352 C318 300 350 278 385 282 C420 288 432 318 424 344"/>
+  <path class="ln" d="M424 344 C412 330 380 326 360 336 C352 360 350 400 340 430 C326 420 322 390 325 352"/>
+  <path class="ln" d="M408 350 L410 356" stroke-width="5"/>
+  <path class="ln" d="M398 336 C404 332 412 332 416 336" stroke-width="3"/>
+  <path class="ln" d="M418 398 C421 396 423 398 421 401" stroke-width="3"/>
+  <path class="ln" d="M366 432 L364 470 M398 432 L402 470"/>
+  <path class="ln" d="M330 470 C350 462 390 462 410 470 L428 700 L318 700 Z"/>
+  <path class="ln" d="M364 470 L384 540 L404 470" stroke-width="3"/>
+  <path class="ln" d="M412 480 C440 520 454 560 468 590 C474 602 486 604 492 596"/>
+  <path class="ln" d="M486 580 L512 566 C518 576 516 590 506 596 L492 604 Z"/>
+  <path class="ln" d="M336 486 C320 560 318 620 330 680"/>
+  <path class="ln" d="M322 700 L328 850 L360 850 L372 720 L388 850 L420 850 L424 700"/>
+  <path class="ln" d="M328 850 L320 878 L364 878 L360 850 M388 850 L384 878 L432 878 L420 850"/>
+  <!-- spegelbilden: en annan person, nöjd och vinkande -->
+  <path class="ln" d="M712 300 C682 300 670 326 674 356 C678 392 696 414 716 414 C740 414 756 392 758 360 C760 328 744 300 712 300 Z"/>
+  <path class="ln" d="M674 340 C672 306 700 290 730 296 C752 300 762 322 758 344 C744 324 720 318 696 324 C688 328 680 334 674 340 Z"/>
+  <path class="ln" d="M698 352 L699 358 M734 352 L735 358" stroke-width="5"/>
+  <path class="ln" d="M694 338 C700 334 706 334 710 338 M726 338 C732 334 738 334 742 338" stroke-width="3"/>
+  <path class="ln" d="M714 362 C710 374 712 380 720 380" stroke-width="3"/>
+  <path class="ln" d="M694 388 C706 404 728 404 740 388" stroke-width="3.5"/>
+  <path class="ln" d="M702 414 L700 460 M732 414 L736 460"/>
+  <path class="ln" d="M694 452 L716 468 L694 482 Z M738 452 L716 468 L738 482 Z" stroke-width="3"/>
+  <path class="ln" d="M672 470 C690 462 740 462 752 470 L760 700 L664 700 Z"/>
+  <path class="ln" d="M752 478 C780 440 792 400 790 360 M790 360 C788 344 796 336 804 340 M790 360 C784 344 786 330 794 330 M790 360 C778 350 776 338 782 334" stroke-width="4"/>
+  <path class="ln" d="M770 320 C778 312 786 312 792 318 M806 330 C814 326 818 330 818 336" stroke-width="2.5"/>
+  <path class="ln" d="M672 484 C660 560 660 620 668 680"/>
+  <path class="ln" d="M666 700 L670 800 M758 700 L754 800 M712 716 L712 800"/>
+  <path class="ln" d="M620 250 L640 230 M622 280 L660 242 M790 660 L812 638" stroke-width="2.5"/>
+</g>
+</svg>

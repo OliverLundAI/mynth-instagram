@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 110 1000 810">
+<!-- Skyltfönstret. Tecknad av Mynth. Tusch #1e1e1e, lavering i grått. Ordning: fasad, skyltning, ägaren, förbipasserande. -->
+<g fill="none" stroke="#1e1e1e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- fasad -->
+  <path d="M40 140 L960 140 L960 870 L40 870 Z" fill="#f0f0f0" stroke="none"/>
+  <path d="M20 870 L980 870"/>
+  <path d="M20 892 L980 892" stroke-width="3"/>
+  <path d="M40 870 L40 140 L960 140 L960 870" stroke-width="3.5"/>
+  <path d="M60 180 L560 180 L542 250 Q524 272 506 250 Q488 272 470 250 Q452 272 434 250 Q416 272 398 250 Q380 272 362 250 Q344 272 326 250 Q308 272 290 250 Q272 272 254 250 Q236 272 218 250 Q200 272 182 250 Q164 272 146 250 Q128 272 110 250 Q92 272 78 250 Z" fill="#bcbcbc"/>
+  <path d="M132 180 L124 254 M204 180 L198 254 M276 180 L272 254 M348 180 L346 254 M420 180 L420 254 M492 180 L494 254" stroke-width="2.5"/>
+  <!-- fönstret -->
+  <path d="M80 290 L520 290 L520 772 L80 772 Z" fill="#fbfbfb"/>
+  <path d="M92 302 L508 302 L508 760 L92 760 Z" stroke-width="3"/>
+  <path d="M70 772 L530 772 L530 792 L70 792 Z" fill="#dadada"/>
+  <!-- dörren -->
+  <path d="M580 860 L580 330 L700 330 L700 860" fill="#cdcdcd"/>
+  <path d="M596 346 L684 346 L684 520 L596 520 Z" fill="#e8e8e8" stroke-width="3"/>
+  <path d="M676 600 L676 640" stroke-width="7"/>
+  <!-- skyltningen -->
+  <path d="M130 600 L290 600 L290 760 L130 760 Z" fill="#dcdcdc"/>
+  <path d="M184 600 L176 520 L246 520 L238 600 Z" fill="#9a9a9a"/>
+  <path d="M211 520 C204 470 186 442 164 424 M211 520 C218 466 234 438 260 418 M211 520 C211 480 214 442 212 404" stroke-width="3"/>
+  <path d="M164 424 C156 416 160 406 170 410 C174 418 170 424 164 424 Z M260 418 C268 408 278 412 274 422 C268 426 262 424 260 418 Z M212 404 C206 394 214 386 220 394 C222 402 216 406 212 404 Z" fill="#7f7f7f" stroke-width="2.5"/>
+  <path d="M320 650 L470 650 L470 760 L320 760 Z" fill="#dcdcdc"/>
+  <path d="M362 650 L362 608 C362 582 428 582 428 608 L428 650 Z" fill="#a8a8a8"/>
+  <path d="M376 592 C376 562 414 562 414 592" stroke-width="3"/>
+  <!-- glans -->
+  <path d="M120 340 L160 312 M120 380 L190 330 M456 728 L492 702" stroke-width="2.5"/>
+  <path d="M470 340 L470 380 M450 360 L490 360 M456 346 L484 374 M484 346 L456 374" stroke-width="2.5"/>
+  <path d="M116 700 L116 726 M103 713 L129 713" stroke-width="2.5"/>
+
+  <!-- butiksägaren, framifrån, putsar rutan och ler stolt -->
+  <path d="M396 570 C410 560 470 560 484 570 L498 800 L382 800 Z" fill="#ffffff"/>
+  <path d="M406 640 L474 640 L478 796 L402 796 Z" fill="#c4c4c4" stroke-width="3"/>
+  <path d="M406 640 L420 570 M474 640 L462 570" stroke-width="2.5"/>
+  <path d="M440 548 C412 548 398 526 400 500 C402 472 420 456 442 456 C466 456 482 474 480 502 C478 528 464 548 440 548 Z" fill="#ffffff"/>
+  <path d="M402 494 C402 466 424 452 446 454 C468 456 482 470 480 492 C470 476 448 470 430 474 C418 478 408 484 402 494 Z" fill="#8a8a8a"/>
+  <path d="M426 500 L427 507 M456 500 L457 507" stroke-width="5"/>
+  <path d="M441 508 C437 516 439 522 446 520" stroke-width="3"/>
+  <path d="M424 526 C434 538 452 538 462 526" stroke-width="3.5"/>
+  <path d="M428 548 L426 568 M456 548 L458 568"/>
+  <path d="M398 584 C372 560 352 520 346 470" />
+  <path d="M322 452 C318 432 336 422 352 428 C366 436 364 458 350 466 C338 470 326 464 322 452 Z" fill="#f4f4f4"/>
+  <path d="M330 446 C336 440 344 440 350 446" stroke-width="2"/>
+  <path d="M484 590 C506 620 512 650 494 668 C486 676 476 672 474 662"/>
+  <path d="M394 800 L398 858 L434 858 L438 812 L446 858 L482 858 L488 800" fill="#9c9c9c"/>
+  <path d="M398 858 L388 870 L436 870 L434 858 M446 858 L444 870 L492 870 L482 858"/>
+  <path d="M300 420 L290 410 M304 466 L292 474 M296 444 L282 444" stroke-width="2.5"/>
+
+  <!-- förbipasserande, på väg förbi med blicken i mobilen -->
+  <path d="M750 482 C770 474 808 474 822 482 L834 700 L740 700 Z" fill="#a8a8a8"/>
+  <path d="M780 470 C752 472 736 450 738 424 C740 398 760 382 784 384 C808 386 822 408 818 434 C814 458 802 468 780 470 Z" fill="#ffffff"/>
+  <path d="M740 418 C742 392 766 378 790 382 C810 386 822 400 820 418 C806 402 780 400 762 410 C752 414 746 418 740 418 Z" fill="#5f5f5f"/>
+  <path d="M806 436 L809 440" stroke-width="5"/>
+  <path d="M816 432 C826 440 826 448 816 452" stroke-width="3"/>
+  <path d="M770 470 L768 480 M796 466 L800 480"/>
+  <path d="M818 494 C838 520 840 546 830 566 C824 576 812 574 808 566"/>
+  <path d="M812 520 L848 506 L860 540 L824 554 Z" fill="#f2f2f2" stroke-width="3.5"/>
+  <path d="M828 512 L814 488 M838 508 L830 484" stroke-width="2"/>
+  <path d="M746 500 C732 560 734 620 746 668"/>
+  <path d="M760 700 L730 862 M814 700 L846 862" stroke-width="5"/>
+  <path d="M730 862 L708 870 L748 870 M846 862 L842 870 L884 870"/>
+
+  <path d="M884 472 C902 464 932 464 944 472 L952 690 L874 690 Z" fill="#d0d0d0"/>
+  <path d="M910 460 C886 462 872 442 874 418 C876 394 894 380 916 382 C938 384 950 404 946 428 C942 450 930 458 910 460 Z" fill="#ffffff"/>
+  <path d="M876 412 C876 388 900 374 922 378 C940 382 950 396 948 412 C932 398 908 396 890 404 C884 408 880 410 876 412 Z" fill="#8a8a8a"/>
+  <path d="M872 400 C856 404 850 420 858 436 C862 444 870 446 874 440" fill="#8a8a8a"/>
+  <path d="M934 428 L937 432" stroke-width="5"/>
+  <path d="M944 424 C952 432 952 438 944 442" stroke-width="3"/>
+  <path d="M902 460 L900 470 M924 456 L928 470"/>
+  <path d="M940 486 C958 508 960 530 952 548"/>
+  <path d="M936 502 L966 492 L974 522 L944 532 Z" fill="#f2f2f2" stroke-width="3.5"/>
+  <path d="M880 490 C868 548 870 610 880 654"/>
+  <path d="M892 690 L868 862 M936 690 L962 862" stroke-width="5"/>
+  <path d="M868 862 L848 870 L886 870 M962 862 L958 870 L990 870"/>
+  <path d="M716 560 L694 560 M720 590 L702 590 M712 620 L698 620 M862 556 L842 556 M866 586 L850 586" stroke-width="2.5"/>
+  <path d="M688 760 C676 800 684 836 696 848 M714 780 C708 808 712 830 718 840" stroke-width="2" opacity=".6"/>
+</g>
+</svg>
