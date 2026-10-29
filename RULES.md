@@ -51,6 +51,15 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 
 1. Varje påstående om Mynth finns i avsnitt 1.
 2. Inget i avsnitt 2 förekommer, varken i bildtexten eller på bilderna.
-3. Ingen siffra förekommer, utom bildnumrering och de fem motorerna som namn.
+3. Ingen siffra förekommer, utom bildnumrering, serienumrering i formen ”Del 1/3” (se avsnitt 6) och de fem motorerna som namn.
 4. render.py gick igenom utan RENDERFEL.
 5. Inga stavfel. Läs igenom på svenska en gång till.
+
+## 6. Serier (tre-i-en)
+
+- En serie är flera inlägg i följd med gemensam titel och samma bildspråk. Serien definieras i `tools/theme.json` under `series` (titel och datum).
+- Varje inlägg följer fortfarande sin veckodags pelare och alla regler ovan. Serien knyter ihop formen, inte innehållet.
+- Varje inlägg ska fungera fristående. Hänvisa inte till föregående eller kommande delar, och lova inte när nästa del kommer.
+- Serieetiketten (t.ex. ”Synas i AI · Del 1/3”) läggs på bilderna automatiskt av render.py. Skriv den inte i slides.
+- Rubrikerna sätts i versaler av temat. Skriv dem i vanlig skiftläge i post.json och håll dem korta, gärna under sex ord, så att den stora typen får plats.
+- Bildtexten avslutas, före hashtaggarna, med raden ”Del 1/3 i serien Synas i AI.” (rätt delnummer och serietitel).

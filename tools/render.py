@@ -12,7 +12,8 @@ Bildtyper i post.json -> "slides":
   {"type":"quote", "quote":"...", "by":"..."}                             stort serifcitat (bara egna påståenden)
   {"type":"cta",   "title":"...", "em":"...", "url":"mynth.se"}          stora prickar
 
-Tema: "theme": "light" | "dark" i post.json (valfritt, se tools/theme.json).
+Tema: väljs från tools/theme.json utifrån datum: "series" -> black (WHOOP-inspirerat, versal grotesk,
+serieetikett "Titel · Del n/N" överst på varje bild), "dark_dates" -> dark, annars light.
 """
 import html, json, pathlib, sys
 from playwright.sync_api import sync_playwright
@@ -58,6 +59,8 @@ blockquote{{font-family:Newsreader,Georgia,serif;font-size:84px;line-height:1.12
 .dots{{position:absolute;display:flex;align-items:flex-end}}
 .dots i{{display:block;border-radius:50%;background:var(--mint)}}
 .hint{{position:absolute;left:{SIDE}px;font-size:26px;color:var(--fg3);letter-spacing:.01em}}
+.kicker{{position:absolute;left:{SIDE}px;top:222px;font-size:26px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--mint)}}
 """
 
 # M-ikonen från Mynths designsystem (artifact "Mynth LinkedIn-banner", Profilbild)
@@ -65,20 +68,49 @@ LOGO = ('<svg class="logo" viewBox="0 0 348 243" aria-label="Mynth"><polygon sty
         'points="0,0 0,243 49.5,243 49.5,71 110.5,243 151.5,243 212.5,71 212.5,243 262,243 262,0 '
         '186.5,0 131,168 75.5,0"/><circle fill="#56bca6" cx="324" cy="219" r="24"/></svg>')
 
-# Teman. Ljust är standard. "theme" i post.json styr; saknas det används tools/theme.json
-# ({"dark_dates": ["YYYY-MM-DD", ...]}) utifrån postens datum.
+# Teman. Ljust är standard. "theme" i post.json styr; saknas det används tools/theme.json:
+# datum i en serie ("series" -> "dates") -> black, datum i "dark_dates" -> dark, annars light.
 THEMES = {
     "light": "",
     "dark": ":root{--bg:#0a0a0c;--fg:#faf9f5;--fg2:#dedcd1;--fg3:#b0aea5;--fg4:#87867f;--b2:#3a3a37;--mint:#0bbfa6;--logo:#faf9f5}",
+    # WHOOP-inspirerat: kolsvart, stor versal grotesk, mint som enda accent. Används för serier.
+    "black": (":root{--bg:#000;--fg:#fff;--fg2:#e8e8e8;--fg3:#a6a6a6;--fg4:#6e6e6e;--b2:#2b2b2b;--mint:#0bbfa6;--logo:#fff}"
+              "h1{font-family:Switzer,'Helvetica Neue',Arial,sans-serif;font-weight:600;text-transform:uppercase;"
+              "font-size:92px;line-height:.96;letter-spacing:-.025em;font-variation-settings:normal}"
+              "h1,blockquote{word-spacing:.06em}.c.big h1{font-size:132px;line-height:.92;letter-spacing:-.03em}"
+              "h1 em{font-style:normal;color:var(--mint)}"
+              "blockquote{font-family:Switzer,'Helvetica Neue',Arial,sans-serif;font-weight:600;text-transform:uppercase;"
+              "font-size:86px;line-height:.98;letter-spacing:-.025em;font-variation-settings:normal}"
+              ".by{text-transform:uppercase;letter-spacing:.14em;font-size:24px;font-weight:500}"
+              ".url{font-family:Switzer,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:52px;letter-spacing:-.01em}"
+              ".n{letter-spacing:.14em}.hint{text-transform:uppercase;letter-spacing:.16em;font-size:22px;font-weight:500}"
+              ".row b{text-transform:uppercase;letter-spacing:.06em;font-size:28px}"
+              ".pills span{text-transform:uppercase;letter-spacing:.08em;font-size:24px;font-weight:600}"),
 }
+
+
+def theme_cfg():
+    cfg = TOOLS / "theme.json"
+    return json.loads(cfg.read_text(encoding="utf-8")) if cfg.exists() else {}
+
+
+def series_label(post):
+    """Serie i flera delar: theme.json -> "series": {"title": "...", "dates": [...]}.
+    Ger t.ex. "Synas i AI · Del 1/3" för första datumet, annars None."""
+    ser = theme_cfg().get("series") or {}
+    dates = ser.get("dates", [])
+    if post.get("date") not in dates:
+        return None
+    return f"{ser['title']} · Del {dates.index(post['date']) + 1}/{len(dates)}"
 
 
 def pick_theme(post):
     t = post.get("theme")
     if not t:
-        cfg = TOOLS / "theme.json"
-        dates = json.loads(cfg.read_text(encoding="utf-8")).get("dark_dates", []) if cfg.exists() else []
-        t = "dark" if post.get("date") in dates else "light"
+        if series_label(post):
+            t = theme_cfg().get("series", {}).get("theme", "black")
+        else:
+            t = "dark" if post.get("date") in theme_cfg().get("dark_dates", []) else "light"
     if t not in THEMES:
         sys.exit(f"okänt tema: {t}")
     return t
@@ -96,14 +128,19 @@ FIT_JS = f"""() => {{
   const c = document.querySelector('.c'); const h = c.querySelector('h1, blockquote');
   const limit = {LINE_Y} - 90; let size = h ? parseFloat(getComputedStyle(h).fontSize) : 0;
   while (h && c.getBoundingClientRect().bottom > limit && size > 60) {{ size -= 4; h.style.fontSize = size + 'px'; }}
+  while (h && h.scrollWidth > h.clientWidth + 1 && size > 60) {{ size -= 4; h.style.fontSize = size + 'px'; }}
   const over = c.getBoundingClientRect().bottom > limit;
   const r = c.getBoundingClientRect().right > {W - SIDE + 2};
-  return {{bottom: c.getBoundingClientRect().bottom, size, over, wide: r}};
+  const r2 = r || (h && h.scrollWidth > h.clientWidth + 1);
+  return {{bottom: c.getBoundingClientRect().bottom, size, over, wide: r2}};
 }}"""
 
 
 def esc(t):
     return html.escape(t or "").replace("\n", "<br>")
+
+
+KICKER = None  # serieetikett, sätts i main()
 
 
 def chrome(i, n, big, hint):
@@ -114,7 +151,8 @@ def chrome(i, n, big, hint):
     return (LOGO + f'<div class="n">{i:02d} / {n:02d}</div>'
             + f'<div class="line" style="top:{LINE_Y}px;left:{left - 48}px"></div>'
             + f'<div class="dots" style="left:{left}px;top:{LINE_Y - d}px;gap:{gap}px">{dots}</div>'
-            + f'<div class="hint" style="top:{LINE_Y - 34}px">{esc(hint)}</div>')
+            + f'<div class="hint" style="top:{LINE_Y - 34}px">{esc(hint)}</div>'
+            + (f'<div class="kicker">{esc(KICKER)}</div>' if KICKER else ""))
 
 
 def slide_html(s, i, n, small=False):
@@ -124,7 +162,7 @@ def slide_html(s, i, n, small=False):
     title = esc(s.get("title"))
     em = f'<br><em>{esc(s["em"])}</em>' if s.get("em") else ""
     if t in ("cover", "cta"):
-        body = f'<div class="c" style="top:320px"><h1>{title}{em}</h1>'
+        body = f'<div class="c big" style="top:320px"><h1>{title}{em}</h1>'
         if s.get("url"):
             body += f'<div class="url">{esc(s["url"])}</div>'
         return chrome(i, n, not small, hint) + body + "</div>"
@@ -150,6 +188,8 @@ def main(spec_path):
     spec_path = pathlib.Path(spec_path).resolve()
     post = json.loads(spec_path.read_text(encoding="utf-8"))
     slides = post["slides"]
+    global KICKER
+    KICKER = series_label(post)
     theme = pick_theme(post)
     small = small_dots(post)
     if not 2 <= len(slides) <= 10:
@@ -177,7 +217,7 @@ def main(spec_path):
         b.close()
     if problems:
         sys.exit("RENDERFEL – korta texten:\n" + "\n".join(problems))
-    print(json.dumps({"theme": theme, "small_dots": small, "images": out}))
+    print(json.dumps({"theme": theme, "small_dots": small, "series": KICKER, "images": out}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
