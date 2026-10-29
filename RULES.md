@@ -61,7 +61,7 @@ eller att de bygger svaren på information som finns om ett företag på nätet.
 - I en serie är bild 1 alltid `{"type": "panel"}` i stället för `cover`. render.py lägger in rätt tredjedel av panoramabilden. Skriv ingen egen text på den.
 - Därefter följer bilderna dagens pelare som vanligt (t.ex. `text` → `text` → `cta`, `text(steps)` → `cta` eller `quote` → `text` → `cta`). Sista bilden är alltid `cta`, och karusellen har 3–6 bilder inklusive panelen.
 - Eftersom panelen saknar rubrik bär bildtextens första rad hela kroken. Den ska kunna stå ensam.
-- Alt-text för panelen: ”Del av en panoramabild: mintgröna prickar i en våg över en mörk grön- och blåtonad bakgrund.” följt av texten som syns på just den delen: första datumet ”Text: mynth.se”, andra ”Text: Rekommenderar AI er eller konkurrenten?”, tredje ”Text: Synas i AI”.
+- Alt-text för panelen: ”Del av en panoramabild: mintgröna prickar i en våg mot en färgtoning i mint och blått uppifrån som övergår i svart.” följt av texten som syns på just den delen: första datumet ”Text: mynth.se”, andra ”Text: Rekommenderar AI er eller konkurrenten?”, tredje ”Text: Synas i AI”.
 - Varje inlägg följer sin veckodags pelare och alla regler ovan, och ska fungera fristående. Hänvisa inte till andra delar och lova inte när nästa del kommer.
 - Serieetiketten (t.ex. ”Synas i AI · Del 1/3”) läggs på de övriga bilderna automatiskt av render.py. Skriv den inte i slides. Rubriker sätts i versaler av temat, så håll dem korta.
 - Bildtexten avslutas, före hashtaggarna, med raden ”Del 1/3 i serien Synas i AI.” (rätt delnummer).
