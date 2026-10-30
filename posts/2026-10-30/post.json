@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-30",
+  "pillar": "Myt eller verklighet",
+  "hook": "Ett snyggt skyltfönster hjälper lite om ingen tittar åt det hållet.",
+  "caption": "Ett snyggt skyltfönster hjälper lite om ingen tittar åt det hållet.\n\nI teckningen putsar en stolt butiksägare sitt skyltfönster. Folket på trottoaren går förbi med blicken i mobilen.\n\nSkämtet är att all energi läggs på något kunderna inte längre tittar på. De frågar AI i mobilen och går dit svaret pekar.\n\nMyten: en snygg webbplats räcker.\nVerkligheten: om AI inte nämner er när kunden frågar, spelar skyltfönstret mindre roll.\n\nRisken är inte att er webbplats är dålig. Risken är att ni inte finns med i svaret.\n\nAI bygger sina svar på information som finns om ett företag på nätet, inte bara på er egen sajt. Därför arbetar Mynth också med tredjepartsnärvaro: databaser, redaktionella kontakter och återförsäljarkanaler, alltså platser där AI hämtar information.\n\nRekommenderar AI er eller konkurrenten? Länk i bio.\n\n#GEO #AIsynlighet #Marknadsföring #Webbplats",
+  "alt": [
+    "Mintgrön skiva som går in uppifrån över svart bakgrund.",
+    "Skämtteckning: en stolt butiksägare putsar sitt skyltfönster, medan folk går förbi med blicken i mobilen. Text: ”Vi har aldrig haft ett snyggare skyltfönster.”",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {
+      "type": "panel"
+    },
+    {
+      "type": "cartoon"
+    },
+    {
+      "type": "cta",
+      "title": "Få er",
+      "em": "synlighetsanalys.",
+      "url": "mynth.se"
+    }
+  ]
+}
