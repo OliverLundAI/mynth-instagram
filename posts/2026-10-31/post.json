@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-31",
+  "pillar": "Testa själv",
+  "hook": "Spegeln svarar ärligt. Frågan är vems namn den nämner.",
+  "caption": "Spegeln svarar ärligt. Frågan är vems namn den nämner.\n\nI teckningen står en företagsledare framför spegeln och frågar vem kunderna ska välja. Spegelbilden är en annan person, nöjd, som vinkar.\n\nPoängen är att spegeln här är AI. Den svarar på frågan, men svaret handlar om någon annan.\n\nTesta själv:\n→ Öppna ChatGPT.\n→ Ställ frågan som era kunder ställer, till exempel: ”Vilket företag ska jag välja för [er tjänst] i [er stad]?”\n→ Titta efter om ni nämns, hur ni beskrivs och vilka som nämns i stället.\n\nRisken är inte att AI talar illa om er. Risken är att ni inte nämns alls.\n\nMynth mäter dagligen hur ett varumärke nämns och citeras i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.\n\nVem visar spegeln när era kunder frågar? Länk i bio.\n\n#GEO #AIsynlighet #Marknadsföring #ChatGPT",
+  "alt": [
+    "Mintgrön skiva som går in uppifrån över svart bakgrund.",
+    "Skämtteckning: en företagsledare står framför en väggspegel, men spegelbilden är en annan, nöjd person som vinkar. Text: ”Spegel, spegel på väggen där – vem ska kunderna välja här?”",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {
+      "type": "panel"
+    },
+    {
+      "type": "cartoon"
+    },
+    {
+      "type": "cta",
+      "title": "Få er",
+      "em": "synlighetsanalys.",
+      "url": "mynth.se"
+    }
+  ]
+}
