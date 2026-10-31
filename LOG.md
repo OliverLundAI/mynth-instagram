@@ -4,6 +4,7 @@ En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
 | Datum | Pelare | Krok | Bilder | Länk |
 |---|---|---|---|---|
+| 2026-10-31 | Testa själv | Spegeln svarar ärligt. Frågan är vems namn den nämner. | Reel | https://www.instagram.com/reel/DfJq1e2ElWw/ |
 | 2026-10-30 | Myt eller verklighet | Ett snyggt skyltfönster hjälper lite om ingen tittar åt det hållet. | Reel | https://www.instagram.com/reel/DfHGMn5gj5k/ |
 | 2026-10-29 | Vad vi gör | Varje obesvarad fråga om er är en lucka i AI-svaren. | 4 | https://www.instagram.com/p/DfEX_bTFvdQ/ |
 | 2026-10-28 | Vad vi mäter | Ett enskilt AI-svar säger lite om hur ni syns. | 4 | https://www.instagram.com/p/DfB2zC3FhR4/ |
