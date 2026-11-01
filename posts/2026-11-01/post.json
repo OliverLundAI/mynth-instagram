@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-01",
+  "pillar": "Tanke",
+  "hook": "Viskleken är rolig på kalas. Mindre rolig när det är ert företag som viskas vidare.",
+  "caption": "Viskleken är rolig på kalas. Mindre rolig när det är ert företag som viskas vidare.\n\nI teckningen viskar robotar vidare om ett företag. När budskapet når den sista har det blivit något annat, och företagaren som får höra det blir förskräckt.\n\nPoängen är att AI-assistenter bygger sin bild av ett företag av det som finns om det på nätet. Är underlaget tunt eller utspritt blir svaret mer en viskning än ett tydligt besked.\n\nDet ni inte själva säger tydligt fyller någon annan i.\n\nRisken är inte att AI talar illa om er. Risken är att ni beskrivs otydligt, eller inte nämns alls, när kunderna frågar.\n\nDärför arbetar Mynth med innehåll som fyller luckor där AI saknar svar om er, och med närvaro i databaser, redaktionella kontakter och återförsäljarkanaler, alltså där AI hämtar information.\n\nVad viskas om er i dag? Länk i bio.\n\n#GEO #AIsynlighet #Varumärke #Kommunikation",
+  "alt": [
+    "Mintgrön skiva som går in uppifrån över svart bakgrund.",
+    "Skämtteckning: tre robotar viskar vidare om ett företag, den sista berättar något förvrängt för en förskräckt företagare. Text: ”Det är i alla fall vad nätet säger om er.”",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {
+      "type": "panel"
+    },
+    {
+      "type": "cartoon"
+    },
+    {
+      "type": "cta",
+      "title": "Få er",
+      "em": "synlighetsanalys.",
+      "url": "mynth.se"
+    }
+  ]
+}
