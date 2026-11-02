@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-02",
+  "pillar": "Risken",
+  "hook": "Kortlistan skrivs innan kunden hör av sig till er.",
+  "caption": "Kortlistan skrivs innan kunden hör av sig till er.\n\nNär en kund ber en AI-assistent om förslag i er bransch sammanfattas svaret, och ett fåtal alternativ nämns.\n\nDe alternativen blir utgångspunkten:\n→ Dem läser kunden vidare om\n→ Dem jämför kunden\n→ Dem kontaktar kunden\n\nRisken är inte att AI talar illa om er. Risken är att ni inte nämns alls, och att valet görs mellan andra innan ni ens vet att frågan ställdes.\n\nMynth mäter dagligen hur ert varumärke nämns i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews. Då ser ni om ni finns med när listan skrivs.\n\nBörja med en synlighetsanalys. Länk i bio.\n\n#GEO #AIsynlighet #Marknadsföring #Varumärke",
+  "alt": [
+    "Text: Kortlistan skrivs i svaret, innan kunden ringer. Mintgröna prickar.",
+    "Text: Ett fåtal alternativ nämns. Kunden ber en AI-assistent om förslag i er bransch och läser vidare om dem som nämns.",
+    "Text: Den som saknas jämförs inte. Risken är att ni inte nämns alls, och att valet görs mellan andra.",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {"type": "cover", "title": "Kortlistan\nskrivs i svaret", "em": "innan kunden ringer."},
+    {"type": "text", "title": "Ett fåtal alternativ nämns.", "sub": "Kunden ber en AI-assistent om förslag i er bransch och läser vidare om dem som nämns."},
+    {"type": "text", "title": "Den som saknas jämförs inte.", "sub": "Risken är att ni inte nämns alls, och att valet görs mellan andra."},
+    {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}
+  ]
+}
