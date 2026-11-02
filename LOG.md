@@ -4,6 +4,7 @@ En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
 | Datum | Pelare | Krok | Bilder | Länk |
 |---|---|---|---|---|
+| 2026-11-02 | Risken | Kortlistan skrivs innan kunden hör av sig till er. | 4 | https://www.instagram.com/p/DfO0tOQFmxr/ |
 | 2026-11-01 | Tanke | Viskleken är rolig på kalas. Mindre rolig när det är ert företag som viskas vidare. | Reel | https://www.instagram.com/reel/DfMPpxYiB5s/ |
 | 2026-10-31 | Testa själv | Spegeln svarar ärligt. Frågan är vems namn den nämner. | Reel | https://www.instagram.com/reel/DfJq1e2ElWw/ |
 | 2026-10-30 | Myt eller verklighet | Ett snyggt skyltfönster hjälper lite om ingen tittar åt det hållet. | Reel | https://www.instagram.com/reel/DfHGMn5gj5k/ |
