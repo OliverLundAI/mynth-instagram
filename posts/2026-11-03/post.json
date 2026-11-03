@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-03",
+  "pillar": "Så fungerar AI-svar",
+  "hook": "Era kunder frågar AI med egna ord. Svaret följer frågan.",
+  "caption": "Era kunder frågar AI med egna ord. Svaret följer frågan.\n\nEn fråga till en AI-assistent är sällan ett enda sökord. Kunden beskriver sitt behov och sin situation, och får ett sammanfattat svar tillbaka.\n\nSå går det till:\n→ Kunden formulerar en hel fråga utifrån sitt behov\n→ Assistenten bygger svaret på den information som finns om företagen på nätet\n→ Svaret nämner ett fåtal alternativ som tydligt passar frågan\n\nDet betyder att en allmän beskrivning av er inte räcker långt. Det som finns om er behöver svara på de frågor era kunder faktiskt ställer.\n\nRisken är att ni passar behovet, men att inget om er visar det. Då nämns ni inte.\n\nMynth fyller luckorna med artiklar och beslutssidor där AI saknar svar om er, och mäter dagligen hur ert varumärke nämns i ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.\n\nVilka frågor ställer era kunder? Länk i bio.\n\n#GEO #AIsynlighet #B2Bmarknadsföring #Varumärke",
+  "alt": [
+    "Text: Kunden frågar med egna ord, och svaret följer frågan. Mintgröna prickar.",
+    "Text: Så läser AI en fråga. Hela frågan räknas, inte ett enskilt sökord. Kunden beskriver sitt behov och sin situation. Assistenten bygger svaret på det som finns om företagen på nätet. Svaret nämner de alternativ som tydligt passar frågan.",
+    "Text: En allmän beskrivning räcker inte. Det som finns om er behöver svara på det kunderna faktiskt frågar.",
+    "Text: Få er synlighetsanalys. mynth.se"
+  ],
+  "slides": [
+    {"type": "cover", "title": "Kunden frågar\nmed egna ord", "em": "och svaret följer frågan."},
+    {"type": "text", "title": "Så läser AI en fråga.", "sub": "Hela frågan räknas, inte ett enskilt sökord.", "steps": [
+      "Kunden beskriver sitt behov och sin situation.",
+      "Assistenten bygger svaret på det som finns om företagen på nätet.",
+      "Svaret nämner de alternativ som tydligt passar frågan."
+    ]},
+    {"type": "text", "title": "En allmän beskrivning räcker inte.", "sub": "Det som finns om er behöver svara på det kunderna faktiskt frågar."},
+    {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}
+  ]
+}
