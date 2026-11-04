@@ -4,7 +4,7 @@ En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
 | Datum | Pelare | Krok | Bilder | Länk |
 |---|---|---|---|---|
-| 2026-11-04 | Vad vi mäter | Att ni syns i en AI-motor betyder inte att ni syns i alla. | 4 | https://www.instagram.com/p/DfT99KQnITI/ |
+| 2026-11-04 | Vad vi mäter | Att ni syns i en AI-motor betyder inte att ni syns i alla. | 4 | https://www.instagram.com/p/DfT-yxmFk03/ |
 | 2026-11-03 | Så fungerar AI-svar | Era kunder frågar AI med egna ord. Svaret följer frågan. | 4 | https://www.instagram.com/p/DfRZpD2HK-d/ |
 | 2026-11-02 | Risken | Kortlistan skrivs innan kunden hör av sig till er. | 4 | https://www.instagram.com/p/DfO0tOQFmxr/ |
 | 2026-11-01 | Tanke | Viskleken är rolig på kalas. Mindre rolig när det är ert företag som viskas vidare. | Reel | https://www.instagram.com/reel/DfMPpxYiB5s/ |
@@ -21,5 +21,6 @@ En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
 | Datum | Steg | Orsak |
 |---|---|---|
+| 2026-11-04 | 4. Publicera (ersatt) | Första versionen (p/DfT99KQnITI) listade Perplexity bland motorerna, enligt dåvarande RULES.md. Rätt motor är Claude. Oliver raderade originalet manuellt, RULES.md är rättad och inlägget publicerades om med Claude. |
 | 2026-10-28 | 4. Publicera (`publish.py publish`, `media_publish`) | Instagram API svarade `Media ID is not available` / "The media is not ready for publishing" (kod 9007, subkod 2207027) trots att alla containrar rapporterat `FINISHED`. Kontrollerat efteråt: inget nytt inlägg på kontot, kvot 0/100. Inlägget (pelare Vad vi mäter, krok ”Ett enskilt AI-svar säger lite om hur ni syns.”) är renderat, kvalitetskontrollerat och pushat i `posts/2026-10-28/`, redo att publiceras manuellt. Löst samma dag: `publish.py` försöker nu igen vid just detta fel, och inlägget publicerades i en manuell körning. |
 | 2026-10-26 | 0. Förberedelser (`publish.py limit`) | Instagram API svarade `API access blocked.` (OAuthException, kod 200) på `GET me`, även vid nytt försök och utan versionsprefix. Inget skrevs, renderades eller publicerades. Orsak: Meta-appen var borttagen. Löst samma dag när appen återställdes, och inlägget publicerades i en manuell körning. |
