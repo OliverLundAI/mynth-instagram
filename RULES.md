@@ -6,7 +6,8 @@ Om ett utkast bryter mot en regel: skriv om det. Om det inte går: hoppa över d
 ## 1. Verifierade fakta (det enda som får påstås om Mynth)
 
 - Mynth (Mynth AB) är en svensk, specialiserad GEO-byrå för företag som vill synas i AI. GEO = Generative Engine Optimization.
-- Mynth mäter dagligen hur ett varumärke nämns och citeras i AI-motorer: ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews. När motorer räknas upp ska alla fem vara med.
+- Mynth mäter dagligen hur ett varumärke nämns och citeras i AI-motorer: ChatGPT, Gemini, Claude, Copilot och Google AI Overviews. När motorer räknas upp ska alla fem vara med.
+- Perplexity ingår inte bland motorerna och ska aldrig nämnas.
 - Mynth arbetar i tre spår:
   1. Mätning – daglig bevakning av hur kunden syns i AI-svar.
   2. Innehåll – artiklar och beslutssidor som fyller luckor där AI saknar svar om kunden.

@@ -2,16 +2,16 @@
   "date": "2026-11-04",
   "pillar": "Vad vi mäter",
   "hook": "Att ni syns i en AI-motor betyder inte att ni syns i alla.",
-  "caption": "Att ni syns i en AI-motor betyder inte att ni syns i alla.\n\nChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews svarar var och en på sitt sätt. Samma fråga kan ge olika svar, med olika företag nämnda.\n\nTestar ni bara i en av dem får ni en bild av just den motorn.\n\nDärför mäter Mynth dagligen hur ert varumärke nämns och citeras i alla motorer, var för sig.\n\nMätning per motor visar:\n→ var ni redan finns med i svaren\n→ var ni saknas\n→ var insatserna behövs\n\nRisken är annars att ni tror att ni syns överallt, för att ni syns på ett ställe.\n\nFörsta steget är en synlighetsanalys, skräddarsydd efter era mål. Länk i bio.\n\n#GEO #AIsynlighet #Varumärke #DigitalMarknadsföring",
+  "caption": "Att ni syns i en AI-motor betyder inte att ni syns i alla.\n\nChatGPT, Gemini, Claude, Copilot och Google AI Overviews svarar var och en på sitt sätt. Samma fråga kan ge olika svar, med olika företag nämnda.\n\nTestar ni bara i en av dem får ni en bild av just den motorn.\n\nDärför mäter Mynth dagligen hur ert varumärke nämns och citeras i alla motorer, var för sig.\n\nMätning per motor visar:\n→ var ni redan finns med i svaren\n→ var ni saknas\n→ var insatserna behövs\n\nRisken är annars att ni tror att ni syns överallt, för att ni syns på ett ställe.\n\nFörsta steget är en synlighetsanalys, skräddarsydd efter era mål. Länk i bio.\n\n#GEO #AIsynlighet #Varumärke #DigitalMarknadsföring",
   "alt": [
     "Text: Varje motor svarar på sitt sätt. Vi mäter i alla. Mintgröna prickar.",
-    "Text: Varje motor ger sitt eget svar. Vi mäter dagligen hur ni nämns och citeras i var och en. ChatGPT, Gemini, Perplexity, Copilot och Google AI Overviews.",
+    "Text: Varje motor ger sitt eget svar. Vi mäter dagligen hur ni nämns och citeras i var och en. ChatGPT, Gemini, Claude, Copilot och Google AI Overviews.",
     "Text: Mätningen visar var ni saknas. Risken är annars att ni tror att ni syns överallt, för att ni syns på ett ställe.",
     "Text: Få er synlighetsanalys. mynth.se"
   ],
   "slides": [
     {"type": "cover", "title": "Varje motor\nsvarar på sitt sätt.", "em": "Vi mäter i alla."},
-    {"type": "text", "title": "Varje motor ger sitt eget svar.", "sub": "Vi mäter dagligen hur ni nämns och citeras i var och en.", "pills": ["ChatGPT", "Gemini", "Perplexity", "Copilot", "Google AI Overviews"]},
+    {"type": "text", "title": "Varje motor ger sitt eget svar.", "sub": "Vi mäter dagligen hur ni nämns och citeras i var och en.", "pills": ["ChatGPT", "Gemini", "Claude", "Copilot", "Google AI Overviews"]},
     {"type": "text", "title": "Mätningen visar var ni saknas.", "sub": "Risken är annars att ni tror att ni syns överallt, för att ni syns på ett ställe."},
     {"type": "cta", "title": "Få er", "em": "synlighetsanalys.", "url": "mynth.se"}
   ]
