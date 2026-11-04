@@ -2,6 +2,8 @@
 
 En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
+> **Pausad 2026-11-04.** Den schemalagda dagliga körningen är avstängd. Instagram-API:erna tas över av Mynth-kontot på Teams; den här uppsättningen har varit en bas.
+
 | Datum | Pelare | Krok | Bilder | Länk |
 |---|---|---|---|---|
 | 2026-11-04 | Vad vi mäter | Att ni syns i en AI-motor betyder inte att ni syns i alla. | 4 | https://www.instagram.com/p/DfT-yxmFk03/ |
