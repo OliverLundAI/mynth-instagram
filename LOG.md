@@ -4,6 +4,7 @@ En rad per inlägg, nyaste överst. Fylls i automatiskt efter publicering.
 
 | Datum | Pelare | Krok | Bilder | Länk |
 |---|---|---|---|---|
+| 2026-11-04 | Vad vi mäter | Att ni syns i en AI-motor betyder inte att ni syns i alla. | 4 | https://www.instagram.com/p/DfT99KQnITI/ |
 | 2026-11-03 | Så fungerar AI-svar | Era kunder frågar AI med egna ord. Svaret följer frågan. | 4 | https://www.instagram.com/p/DfRZpD2HK-d/ |
 | 2026-11-02 | Risken | Kortlistan skrivs innan kunden hör av sig till er. | 4 | https://www.instagram.com/p/DfO0tOQFmxr/ |
 | 2026-11-01 | Tanke | Viskleken är rolig på kalas. Mindre rolig när det är ert företag som viskas vidare. | Reel | https://www.instagram.com/reel/DfMPpxYiB5s/ |
